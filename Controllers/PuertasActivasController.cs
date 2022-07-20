@@ -24,14 +24,14 @@ namespace V_Vuelos_Main_API.Controllers
         }
 
         // GET: api/PuertasActivas
-        public IEnumerable<uspRecuperarPuertasActivas_Result> GetPuertasActivas()
+        public List<uspRecuperarPuertasActivas_Result> GetPuertasActivas()
         {
-            IEnumerable<uspRecuperarPuertasActivas_Result> resultado = db.uspRecuperarPuertasActivas().AsEnumerable();
+            List<uspRecuperarPuertasActivas_Result> resultado = db.uspRecuperarPuertasActivas().ToList();
 
-            foreach (var puertaActiva in resultado.ToList())
+            foreach (var puertaActiva in resultado)
             {
                 puertaActiva.numero = c.desencriptar(puertaActiva.numero);
-                //puertaActiva.DescripcionEstado = c.desencriptar(puertaActiva.DescripcionEstado);
+                puertaActiva.DescripcionEstado = c.desencriptar(puertaActiva.DescripcionEstado);
             }
 
             return resultado;

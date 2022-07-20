@@ -165,6 +165,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AerolineasController.cs" />
     <Compile Include="Controllers\BitacorasController.cs" />
+    <Compile Include="Controllers\CambiarContraController.cs" />
     <Compile Include="Controllers\ConsecutivosController.cs" />
     <Compile Include="Controllers\ErroresController.cs" />
     <Compile Include="Controllers\EstadoPuertasController.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Controllers\TipoTransaccionesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\VuelosController.cs" />
+    <Compile Include="Controllers\VuelosDescriptivosController.cs" />
     <Compile Include="Crypto\Crypt.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
