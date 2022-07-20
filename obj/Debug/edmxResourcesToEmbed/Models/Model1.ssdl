@@ -1,0 +1,704 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="V_Vuelos_Main_NotEncryptedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Aerolinea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Imagen" Type="varbinary(max)" Nullable="false" />
+    <Property Name="pais" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="Bitacora">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="12" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="hora" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="registro_detalle" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="operacion" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="900" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Boleto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="forma_pago" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="tipo_transaccion" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="vuelo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="cliente" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="precio" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteToken">
+    <Key>
+      <PropertyRef Name="correo" />
+    </Key>
+    <Property Name="correo" Type="varchar" MaxLength="900" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteWeb">
+    <Key>
+      <PropertyRef Name="usuario" />
+    </Key>
+    <Property Name="usuario" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="primer_apellido" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="segundo_apellido" Type="varchar" MaxLength="1000" />
+    <Property Name="correo" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="contrasena" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="pregunta_seguridad" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="respuesta_seguridad" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Consecutivo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="valor" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="prefijo" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="rango_inicial" Type="varchar" MaxLength="1000" />
+    <Property Name="rango_final" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Error">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="hora" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="numero_error" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="mensaje_error" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadoPuerta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadoVuelo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormaPago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="900" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="imagen" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pregunta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="900" />
+  </EntityType>
+  <EntityType Name="Puerta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="estado" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="900" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tarjeta">
+    <Key>
+      <PropertyRef Name="numero_tarjeta" />
+    </Key>
+    <Property Name="numero_tarjeta" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="fecha_expiracion" Type="varchar" MaxLength="900" />
+    <Property Name="tipo_tarjeta" Type="decimal" Precision="2" Scale="0" />
+    <Property Name="cliente" Type="varchar" MaxLength="900" />
+    <Property Name="cvv" Type="varchar" MaxLength="900" />
+  </EntityType>
+  <EntityType Name="TipoTarjeta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="900" />
+  </EntityType>
+  <EntityType Name="TipoTransaccion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="usuario" />
+    </Key>
+    <Property Name="usuario" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="contrasena" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="rol" Type="decimal" Precision="2" Scale="0" />
+    <Property Name="pregunta_seguridad" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="respuesta_seguridad" Type="varchar" MaxLength="900" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vuelo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_partida" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="hora_partida" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="fecha_llegada" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="hora_llegada" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="aerolinea" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="puerta" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="estado" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="parte_de" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="llega_a" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Aerolinea_Pais">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+    <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Aerolinea">
+        <PropertyRef Name="pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bitacora_Operacion">
+    <End Role="Operacion" Type="Self.Operacion" Multiplicity="1" />
+    <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bitacora">
+        <PropertyRef Name="operacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bitacora_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="usuario" />
+      </Principal>
+      <Dependent Role="Bitacora">
+        <PropertyRef Name="usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_ClienteToken">
+    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClienteToken">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_ClienteWeb">
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClienteWeb">
+        <PropertyRef Name="usuario" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_FormaPago">
+    <End Role="FormaPago" Type="Self.FormaPago" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormaPago">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="forma_pago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_TipoTransaccion">
+    <End Role="TipoTransaccion" Type="Self.TipoTransaccion" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTransaccion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="tipo_transaccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_Vuelo">
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vuelo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="vuelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClienteWeb_Pregunta">
+    <End Role="Pregunta" Type="Self.Pregunta" Multiplicity="1" />
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregunta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ClienteWeb">
+        <PropertyRef Name="pregunta_seguridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Puerta_EstadoPuerta">
+    <End Role="EstadoPuerta" Type="Self.EstadoPuerta" Multiplicity="1" />
+    <End Role="Puerta" Type="Self.Puerta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoPuerta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Puerta">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarjeta_ClienteToken">
+    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="0..1" />
+    <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClienteToken">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="Tarjeta">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarjeta_ClienteWeb">
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="0..1" />
+    <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClienteWeb">
+        <PropertyRef Name="usuario" />
+      </Principal>
+      <Dependent Role="Tarjeta">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarjeta_TipoTarjeta">
+    <End Role="TipoTarjeta" Type="Self.TipoTarjeta" Multiplicity="0..1" />
+    <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTarjeta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tarjeta">
+        <PropertyRef Name="tipo_tarjeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Pregunta">
+    <End Role="Pregunta" Type="Self.Pregunta" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregunta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="pregunta_seguridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_Aerolinea">
+    <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aerolinea">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="aerolinea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_EstadoVuelo">
+    <End Role="EstadoVuelo" Type="Self.EstadoVuelo" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoVuelo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_Pais1">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="parte_de" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_Pais2">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="llega_a" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_Puerta">
+    <End Role="Puerta" Type="Self.Puerta" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puerta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="puerta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="seed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usf_base64_encode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="value" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarAerolinea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="imagen" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="pais" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarBoleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="formaPago" Type="decimal" Mode="In" />
+    <Parameter Name="tipoTransaccion" Type="decimal" Mode="In" />
+    <Parameter Name="vuelo" Type="varchar" Mode="In" />
+    <Parameter Name="cliente" Type="varchar" Mode="In" />
+    <Parameter Name="precio" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarConsecutivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="valor" Type="decimal" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="prefijo" Type="varchar" Mode="In" />
+    <Parameter Name="rangoInicial" Type="varchar" Mode="In" />
+    <Parameter Name="rangoFinal" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarError" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha" Type="varchar" Mode="In" />
+    <Parameter Name="hora" Type="varchar" Mode="In" />
+    <Parameter Name="numeroDeError" Type="varchar" Mode="In" />
+    <Parameter Name="mensajeDeError" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="imagen" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarPuerta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarTarjeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numeroDeTarjeta" Type="varchar" Mode="In" />
+    <Parameter Name="fechaExpiracion" Type="varchar" Mode="In" />
+    <Parameter Name="tipoTarjeta" Type="decimal" Mode="In" />
+    <Parameter Name="cliente" Type="varchar" Mode="In" />
+    <Parameter Name="cvv" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="contrasena" Type="varchar" Mode="In" />
+    <Parameter Name="correo" Type="varchar" Mode="In" />
+    <Parameter Name="rol" Type="decimal" Mode="In" />
+    <Parameter Name="preguntaSeguridad" Type="decimal" Mode="In" />
+    <Parameter Name="respuestaSeguridad" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspAgregarVuelo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_partida" Type="varchar" Mode="In" />
+    <Parameter Name="hora_partida" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_llegada" Type="varchar" Mode="In" />
+    <Parameter Name="hora_llegada" Type="varchar" Mode="In" />
+    <Parameter Name="aerolinea" Type="varchar" Mode="In" />
+    <Parameter Name="puerta" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="decimal" Mode="In" />
+    <Parameter Name="parteDe" Type="varchar" Mode="In" />
+    <Parameter Name="llegaA" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspBorrarAerolinea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspBorrarBoleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBoleto" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspBorrarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspBorrarPuerta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspBorrarTarjeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numeroDeTarjeta" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspBorrarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspBorrarVuelo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspCambiarContrasenaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="nuevaContrasena" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspEditarAerolinea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="imagen" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="uspEditarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
+    <Parameter Name="correo" Type="varchar" Mode="In" />
+    <Parameter Name="rol" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="uspEditarVuelo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_partida" Type="varchar" Mode="In" />
+    <Parameter Name="hora_partida" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_llegada" Type="varchar" Mode="In" />
+    <Parameter Name="hora_llegada" Type="varchar" Mode="In" />
+    <Parameter Name="aerolinea" Type="varchar" Mode="In" />
+    <Parameter Name="pais" Type="varchar" Mode="In" />
+    <Parameter Name="puerta" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="decimal" Mode="In" />
+    <Parameter Name="parteDe" Type="varchar" Mode="In" />
+    <Parameter Name="llegaA" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspModificarConsecutivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="decimal" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="prefijo" Type="varchar" Mode="In" />
+    <Parameter Name="rangoFinal" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspRecuperarAerolineaPorPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPais" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspRecuperarAerolineas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarBitacora" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarConsecutivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarEstadosPuerta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarEstadosVuelo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarFormasDePago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarPaises" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarPreguntasSeguridad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarPuertas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarPuertasActivas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarTiposTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarUsuario_Especifico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUsuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspRecuperarUsuario_General" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarVuelos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="V_Vuelos_Main_NotEncryptedModelStoreContainer">
+    <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Boleto" EntityType="Self.Boleto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClienteToken" EntityType="Self.ClienteToken" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClienteWeb" EntityType="Self.ClienteWeb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consecutivo" EntityType="Self.Consecutivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoPuerta" EntityType="Self.EstadoPuerta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoVuelo" EntityType="Self.EstadoVuelo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormaPago" EntityType="Self.FormaPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operacion" EntityType="Self.Operacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pregunta" EntityType="Self.Pregunta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Puerta" EntityType="Self.Puerta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoTarjeta" EntityType="Self.TipoTarjeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoTransaccion" EntityType="Self.TipoTransaccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vuelo" EntityType="Self.Vuelo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Aerolinea_Pais" Association="Self.FK_Aerolinea_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Aerolinea" EntitySet="Aerolinea" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bitacora_Operacion" Association="Self.FK_Bitacora_Operacion">
+      <End Role="Operacion" EntitySet="Operacion" />
+      <End Role="Bitacora" EntitySet="Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bitacora_Usuario" Association="Self.FK_Bitacora_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Bitacora" EntitySet="Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_ClienteToken" Association="Self.FK_Boleto_ClienteToken">
+      <End Role="ClienteToken" EntitySet="ClienteToken" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_ClienteWeb" Association="Self.FK_Boleto_ClienteWeb">
+      <End Role="ClienteWeb" EntitySet="ClienteWeb" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_FormaPago" Association="Self.FK_Boleto_FormaPago">
+      <End Role="FormaPago" EntitySet="FormaPago" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_TipoTransaccion" Association="Self.FK_Boleto_TipoTransaccion">
+      <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_Vuelo" Association="Self.FK_Boleto_Vuelo">
+      <End Role="Vuelo" EntitySet="Vuelo" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClienteWeb_Pregunta" Association="Self.FK_ClienteWeb_Pregunta">
+      <End Role="Pregunta" EntitySet="Pregunta" />
+      <End Role="ClienteWeb" EntitySet="ClienteWeb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Puerta_EstadoPuerta" Association="Self.FK_Puerta_EstadoPuerta">
+      <End Role="EstadoPuerta" EntitySet="EstadoPuerta" />
+      <End Role="Puerta" EntitySet="Puerta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarjeta_ClienteToken" Association="Self.FK_Tarjeta_ClienteToken">
+      <End Role="ClienteToken" EntitySet="ClienteToken" />
+      <End Role="Tarjeta" EntitySet="Tarjeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarjeta_ClienteWeb" Association="Self.FK_Tarjeta_ClienteWeb">
+      <End Role="ClienteWeb" EntitySet="ClienteWeb" />
+      <End Role="Tarjeta" EntitySet="Tarjeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarjeta_TipoTarjeta" Association="Self.FK_Tarjeta_TipoTarjeta">
+      <End Role="TipoTarjeta" EntitySet="TipoTarjeta" />
+      <End Role="Tarjeta" EntitySet="Tarjeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Pregunta" Association="Self.FK_Usuario_Pregunta">
+      <End Role="Pregunta" EntitySet="Pregunta" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_Aerolinea" Association="Self.FK_Vuelo_Aerolinea">
+      <End Role="Aerolinea" EntitySet="Aerolinea" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_EstadoVuelo" Association="Self.FK_Vuelo_EstadoVuelo">
+      <End Role="EstadoVuelo" EntitySet="EstadoVuelo" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_Pais1" Association="Self.FK_Vuelo_Pais1">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_Pais2" Association="Self.FK_Vuelo_Pais2">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_Puerta" Association="Self.FK_Vuelo_Puerta">
+      <End Role="Puerta" EntitySet="Puerta" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
