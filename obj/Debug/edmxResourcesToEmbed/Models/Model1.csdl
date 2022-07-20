@@ -1,0 +1,817 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="V_Vuelos_Main_NotEncryptedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Aerolinea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="pais" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Bitacora">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="12" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hora" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="registro_detalle" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usuario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="operacion" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Boleto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="forma_pago" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="tipo_transaccion" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="vuelo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteToken">
+    <Key>
+      <PropertyRef Name="correo" />
+    </Key>
+    <Property Name="correo" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteWeb">
+    <Key>
+      <PropertyRef Name="usuario" />
+    </Key>
+    <Property Name="usuario" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="primer_apellido" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="segundo_apellido" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contrasena" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pregunta_seguridad" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="respuesta_seguridad" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Consecutivo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="valor" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prefijo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rango_inicial" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="rango_final" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Error">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hora" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numero_error" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mensaje_error" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadoPuerta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadoVuelo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormaPago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pregunta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Puerta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numero" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tarjeta">
+    <Key>
+      <PropertyRef Name="numero_tarjeta" />
+    </Key>
+    <Property Name="numero_tarjeta" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_expiracion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_tarjeta" Type="Decimal" Precision="2" Scale="0" />
+    <Property Name="cliente" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+    <Property Name="cvv" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TipoTarjeta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TipoTransaccion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="usuario1" />
+    </Key>
+    <Property Name="usuario1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contrasena" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rol" Type="Decimal" Precision="2" Scale="0" />
+    <Property Name="pregunta_seguridad" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="respuesta_seguridad" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vuelo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_partida" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hora_partida" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_llegada" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hora_llegada" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="aerolinea" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="puerta" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="parte_de" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="llega_a" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Aerolinea_Pais">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+    <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Aerolinea">
+        <PropertyRef Name="pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_Aerolinea">
+    <End Role="Aerolinea" Type="Self.Aerolinea" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aerolinea">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="aerolinea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bitacora_Operacion">
+    <End Role="Operacion" Type="Self.Operacion" Multiplicity="1" />
+    <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bitacora">
+        <PropertyRef Name="operacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bitacora_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="usuario1" />
+      </Principal>
+      <Dependent Role="Bitacora">
+        <PropertyRef Name="usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_ClienteToken">
+    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClienteToken">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_ClienteWeb">
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClienteWeb">
+        <PropertyRef Name="usuario" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_FormaPago">
+    <End Role="FormaPago" Type="Self.FormaPago" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormaPago">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="forma_pago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_TipoTransaccion">
+    <End Role="TipoTransaccion" Type="Self.TipoTransaccion" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTransaccion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="tipo_transaccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleto_Vuelo">
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="1" />
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vuelo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="vuelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarjeta_ClienteToken">
+    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="0..1" />
+    <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClienteToken">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="Tarjeta">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClienteWeb_Pregunta">
+    <End Role="Pregunta" Type="Self.Pregunta" Multiplicity="1" />
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregunta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ClienteWeb">
+        <PropertyRef Name="pregunta_seguridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarjeta_ClienteWeb">
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="0..1" />
+    <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClienteWeb">
+        <PropertyRef Name="usuario" />
+      </Principal>
+      <Dependent Role="Tarjeta">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Puerta_EstadoPuerta">
+    <End Role="EstadoPuerta" Type="Self.EstadoPuerta" Multiplicity="1" />
+    <End Role="Puerta" Type="Self.Puerta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoPuerta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Puerta">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_EstadoVuelo">
+    <End Role="EstadoVuelo" Type="Self.EstadoVuelo" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoVuelo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_Pais1">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="parte_de" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_Pais2">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="llega_a" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Pregunta">
+    <End Role="Pregunta" Type="Self.Pregunta" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregunta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="pregunta_seguridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vuelo_Puerta">
+    <End Role="Puerta" Type="Self.Puerta" Multiplicity="1" />
+    <End Role="Vuelo" Type="Self.Vuelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puerta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vuelo">
+        <PropertyRef Name="puerta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarjeta_TipoTarjeta">
+    <End Role="TipoTarjeta" Type="Self.TipoTarjeta" Multiplicity="0..1" />
+    <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTarjeta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tarjeta">
+        <PropertyRef Name="tipo_tarjeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="V_Vuelos_Main_NotEncryptedEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" />
+    <EntitySet Name="Bitacora" EntityType="Self.Bitacora" />
+    <EntitySet Name="Boleto" EntityType="Self.Boleto" />
+    <EntitySet Name="ClienteToken" EntityType="Self.ClienteToken" />
+    <EntitySet Name="ClienteWeb" EntityType="Self.ClienteWeb" />
+    <EntitySet Name="Consecutivo" EntityType="Self.Consecutivo" />
+    <EntitySet Name="Error" EntityType="Self.Error" />
+    <EntitySet Name="EstadoPuerta" EntityType="Self.EstadoPuerta" />
+    <EntitySet Name="EstadoVuelo" EntityType="Self.EstadoVuelo" />
+    <EntitySet Name="FormaPago" EntityType="Self.FormaPago" />
+    <EntitySet Name="Operacion" EntityType="Self.Operacion" />
+    <EntitySet Name="Pais" EntityType="Self.Pais" />
+    <EntitySet Name="Pregunta" EntityType="Self.Pregunta" />
+    <EntitySet Name="Puerta" EntityType="Self.Puerta" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
+    <EntitySet Name="TipoTarjeta" EntityType="Self.TipoTarjeta" />
+    <EntitySet Name="TipoTransaccion" EntityType="Self.TipoTransaccion" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="Vuelo" EntityType="Self.Vuelo" />
+    <AssociationSet Name="FK_Aerolinea_Pais" Association="Self.FK_Aerolinea_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Aerolinea" EntitySet="Aerolinea" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_Aerolinea" Association="Self.FK_Vuelo_Aerolinea">
+      <End Role="Aerolinea" EntitySet="Aerolinea" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bitacora_Operacion" Association="Self.FK_Bitacora_Operacion">
+      <End Role="Operacion" EntitySet="Operacion" />
+      <End Role="Bitacora" EntitySet="Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bitacora_Usuario" Association="Self.FK_Bitacora_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Bitacora" EntitySet="Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_ClienteToken" Association="Self.FK_Boleto_ClienteToken">
+      <End Role="ClienteToken" EntitySet="ClienteToken" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_ClienteWeb" Association="Self.FK_Boleto_ClienteWeb">
+      <End Role="ClienteWeb" EntitySet="ClienteWeb" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_FormaPago" Association="Self.FK_Boleto_FormaPago">
+      <End Role="FormaPago" EntitySet="FormaPago" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_TipoTransaccion" Association="Self.FK_Boleto_TipoTransaccion">
+      <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleto_Vuelo" Association="Self.FK_Boleto_Vuelo">
+      <End Role="Vuelo" EntitySet="Vuelo" />
+      <End Role="Boleto" EntitySet="Boleto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarjeta_ClienteToken" Association="Self.FK_Tarjeta_ClienteToken">
+      <End Role="ClienteToken" EntitySet="ClienteToken" />
+      <End Role="Tarjeta" EntitySet="Tarjeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClienteWeb_Pregunta" Association="Self.FK_ClienteWeb_Pregunta">
+      <End Role="Pregunta" EntitySet="Pregunta" />
+      <End Role="ClienteWeb" EntitySet="ClienteWeb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarjeta_ClienteWeb" Association="Self.FK_Tarjeta_ClienteWeb">
+      <End Role="ClienteWeb" EntitySet="ClienteWeb" />
+      <End Role="Tarjeta" EntitySet="Tarjeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Puerta_EstadoPuerta" Association="Self.FK_Puerta_EstadoPuerta">
+      <End Role="EstadoPuerta" EntitySet="EstadoPuerta" />
+      <End Role="Puerta" EntitySet="Puerta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_EstadoVuelo" Association="Self.FK_Vuelo_EstadoVuelo">
+      <End Role="EstadoVuelo" EntitySet="EstadoVuelo" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_Pais1" Association="Self.FK_Vuelo_Pais1">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_Pais2" Association="Self.FK_Vuelo_Pais2">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Pregunta" Association="Self.FK_Usuario_Pregunta">
+      <End Role="Pregunta" EntitySet="Pregunta" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vuelo_Puerta" Association="Self.FK_Vuelo_Puerta">
+      <End Role="Puerta" EntitySet="Puerta" />
+      <End Role="Vuelo" EntitySet="Vuelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarjeta_TipoTarjeta" Association="Self.FK_Tarjeta_TipoTarjeta">
+      <End Role="TipoTarjeta" EntitySet="TipoTarjeta" />
+      <End Role="Tarjeta" EntitySet="Tarjeta" />
+    </AssociationSet>
+    <FunctionImport Name="seed" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="usf_base64_encode" ReturnType="Collection(String)">
+      <Parameter Name="value" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarAerolinea">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="imagen" Mode="In" Type="Binary" />
+      <Parameter Name="pais" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarBoleto">
+      <Parameter Name="formaPago" Mode="In" Type="Decimal" />
+      <Parameter Name="tipoTransaccion" Mode="In" Type="Decimal" />
+      <Parameter Name="vuelo" Mode="In" Type="String" />
+      <Parameter Name="cliente" Mode="In" Type="String" />
+      <Parameter Name="precio" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarConsecutivo">
+      <Parameter Name="valor" Mode="In" Type="Decimal" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+      <Parameter Name="prefijo" Mode="In" Type="String" />
+      <Parameter Name="rangoInicial" Mode="In" Type="String" />
+      <Parameter Name="rangoFinal" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarError">
+      <Parameter Name="fecha" Mode="In" Type="String" />
+      <Parameter Name="hora" Mode="In" Type="String" />
+      <Parameter Name="numeroDeError" Mode="In" Type="String" />
+      <Parameter Name="mensajeDeError" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarPais">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="imagen" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarPuerta">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="estado" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarTarjeta">
+      <Parameter Name="numeroDeTarjeta" Mode="In" Type="String" />
+      <Parameter Name="fechaExpiracion" Mode="In" Type="String" />
+      <Parameter Name="tipoTarjeta" Mode="In" Type="Decimal" />
+      <Parameter Name="cliente" Mode="In" Type="String" />
+      <Parameter Name="cvv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarUsuario">
+      <Parameter Name="nombreUsuario" Mode="In" Type="String" />
+      <Parameter Name="contrasena" Mode="In" Type="String" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="rol" Mode="In" Type="Decimal" />
+      <Parameter Name="preguntaSeguridad" Mode="In" Type="Decimal" />
+      <Parameter Name="respuestaSeguridad" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspAgregarVuelo">
+      <Parameter Name="fecha_partida" Mode="In" Type="String" />
+      <Parameter Name="hora_partida" Mode="In" Type="String" />
+      <Parameter Name="fecha_llegada" Mode="In" Type="String" />
+      <Parameter Name="hora_llegada" Mode="In" Type="String" />
+      <Parameter Name="aerolinea" Mode="In" Type="String" />
+      <Parameter Name="puerta" Mode="In" Type="String" />
+      <Parameter Name="estado" Mode="In" Type="Decimal" />
+      <Parameter Name="parteDe" Mode="In" Type="String" />
+      <Parameter Name="llegaA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspBorrarAerolinea">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspBorrarBoleto">
+      <Parameter Name="idBoleto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspBorrarPais">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspBorrarPuerta">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspBorrarTarjeta">
+      <Parameter Name="numeroDeTarjeta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspBorrarUsuario">
+      <Parameter Name="nombreUsuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspBorrarVuelo">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspCambiarContrasenaUsuario">
+      <Parameter Name="nombreUsuario" Mode="In" Type="String" />
+      <Parameter Name="nuevaContrasena" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspEditarAerolinea">
+      <Parameter Name="id" Mode="In" Type="String" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="imagen" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="uspEditarUsuario">
+      <Parameter Name="nombreUsuario" Mode="In" Type="String" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="rol" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="uspEditarVuelo">
+      <Parameter Name="id" Mode="In" Type="String" />
+      <Parameter Name="fecha_partida" Mode="In" Type="String" />
+      <Parameter Name="hora_partida" Mode="In" Type="String" />
+      <Parameter Name="fecha_llegada" Mode="In" Type="String" />
+      <Parameter Name="hora_llegada" Mode="In" Type="String" />
+      <Parameter Name="aerolinea" Mode="In" Type="String" />
+      <Parameter Name="pais" Mode="In" Type="String" />
+      <Parameter Name="puerta" Mode="In" Type="String" />
+      <Parameter Name="estado" Mode="In" Type="Decimal" />
+      <Parameter Name="parteDe" Mode="In" Type="String" />
+      <Parameter Name="llegaA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspModificarConsecutivo">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+      <Parameter Name="prefijo" Mode="In" Type="String" />
+      <Parameter Name="rangoFinal" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspRecuperarAerolineaPorPais" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarAerolineaPorPais_Result)">
+      <Parameter Name="idPais" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspRecuperarAerolineas" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarAerolineas_Result)" />
+    <FunctionImport Name="uspRecuperarBitacora" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarBitacora_Result)" />
+    <FunctionImport Name="uspRecuperarConsecutivos" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarConsecutivos_Result)" />
+    <FunctionImport Name="uspRecuperarEstadosPuerta" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarEstadosPuerta_Result)" />
+    <FunctionImport Name="uspRecuperarEstadosVuelo" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarEstadosVuelo_Result)" />
+    <FunctionImport Name="uspRecuperarFormasDePago" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarFormasDePago_Result)" />
+    <FunctionImport Name="uspRecuperarPaises" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarPaises_Result)" />
+    <FunctionImport Name="uspRecuperarPreguntasSeguridad" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarPreguntasSeguridad_Result)" />
+    <FunctionImport Name="uspRecuperarPuertas" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarPuertas_Result)" />
+    <FunctionImport Name="uspRecuperarPuertasActivas" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarPuertasActivas_Result)" />
+    <FunctionImport Name="uspRecuperarRoles" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarRoles_Result)" />
+    <FunctionImport Name="uspRecuperarTiposTransaccion" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarTiposTransaccion_Result)" />
+    <FunctionImport Name="uspRecuperarUsuario_Especifico" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarUsuario_Especifico_Result)">
+      <Parameter Name="idUsuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspRecuperarUsuario_General" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarUsuario_General_Result)" />
+    <FunctionImport Name="uspRecuperarVuelos" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarVuelos_Result)" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarAerolineaPorPais_Result">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
+    <Property Type="Binary" Name="imagen" Nullable="false" />
+    <Property Type="String" Name="CodigoPais" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarAerolineas_Result">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
+    <Property Type="Binary" Name="imagen" Nullable="false" />
+    <Property Type="String" Name="CodigoPais" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarBitacora_Result">
+    <Property Type="Decimal" Name="id" Nullable="false" Precision="12" Scale="0" />
+    <Property Type="String" Name="fecha" Nullable="false" MaxLength="900" />
+    <Property Type="String" Name="hora" Nullable="false" MaxLength="900" />
+    <Property Type="String" Name="registro_detalle" Nullable="false" MaxLength="900" />
+    <Property Type="String" Name="usuario" Nullable="false" MaxLength="40" />
+    <Property Type="Decimal" Name="codigo_operacion" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="nombre_operacion" Nullable="true" MaxLength="900" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="900" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarConsecutivos_Result">
+    <Property Type="Decimal" Name="id" Nullable="false" Precision="8" Scale="0" />
+    <Property Type="String" Name="valor" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="prefijo" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="rango_inicial" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="rango_final" Nullable="true" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarEstadosPuerta_Result">
+    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarEstadosVuelo_Result">
+    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarFormasDePago_Result">
+    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarPaises_Result">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="1000" />
+    <Property Type="Binary" Name="imagen" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarPreguntasSeguridad_Result">
+    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="900" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarPuertas_Result">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="numero" Nullable="false" MaxLength="1000" />
+    <Property Type="Decimal" Name="NumeroEstado" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcionEstado" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarPuertasActivas_Result">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="numero" Nullable="false" MaxLength="1000" />
+    <Property Type="Decimal" Name="NumeroEstado" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="DescripcionEstado" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarRoles_Result">
+    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="900" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarTiposTransaccion_Result">
+    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarUsuario_Especifico_Result">
+    <Property Type="String" Name="usuario" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="correo" Nullable="false" MaxLength="900" />
+    <Property Type="Decimal" Name="NumeroRol" Nullable="true" Precision="2" Scale="0" />
+    <Property Type="String" Name="nombreRol" Nullable="false" MaxLength="900" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarUsuario_General_Result">
+    <Property Type="String" Name="usuario" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="correo" Nullable="false" MaxLength="900" />
+    <Property Type="Decimal" Name="NumeroRol" Nullable="true" Precision="2" Scale="0" />
+    <Property Type="String" Name="nombreRol" Nullable="false" MaxLength="900" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarVuelos_Result">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="fecha_partida" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="hora_partida" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="fecha_llegada" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="hora_llegada" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="codigo_aerolinea" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nombre_aerolinea" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="codigo_puerta" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="numero_puerta" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="codigo_estado" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion_estado" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="codigo_pais_parte" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="nombre_pais_parte" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="codigo_pais_llega" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="nombre_pais_llega" Nullable="true" MaxLength="1000" />
+  </ComplexType>
+</Schema>
