@@ -9,10 +9,10 @@ NOTAS IMPORTANTES:
 - La información que se introduzca a la BD tiene que entrar en un orden muy específico, ya que esta utilizada llaves primarias con "identity" habilitado, por lo que el valor de estas incrementa automáticamente conforme se inserten los valores. El orden en el que se debe insertar la información de las tablas es el siguiente: 
 
 1. TipoTarjeta
-  1.1. POST que introduzca valor 'Visa'
-  1.2. POST que introduzca valor 'Mastercard'
-  1.3. POST que introduzca valor 'American Express'
-  1.4. POST que introduzca valor 'Discover'
+  - 1.1. POST que introduzca valor 'Visa'
+  - 1.2. POST que introduzca valor 'Mastercard'
+  - 1.3. POST que introduzca valor 'American Express'
+  - 1.4. POST que introduzca valor 'Discover'
 2. Operacion
 3. Rol
 4. Pregunta
