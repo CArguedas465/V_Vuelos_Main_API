@@ -16,12 +16,12 @@ namespace V_Vuelos_Main_API.Controllers
     public class EstadoPuertasController : ApiController
     {
 
-        V_Vuelos_Main_NotEncryptedEntities db;
+        V_Vuelos_MainEntities db;
         Crypt c;
 
         public EstadoPuertasController()
         {
-            db = new V_Vuelos_Main_NotEncryptedEntities();
+            db = new V_Vuelos_MainEntities();
             c = new Crypt();
         }
 

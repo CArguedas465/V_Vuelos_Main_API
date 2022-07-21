@@ -15,11 +15,11 @@ namespace V_Vuelos_Main_API.Controllers
 {
     public class CambiarContraController : ApiController
     {
-        private V_Vuelos_Main_NotEncryptedEntities db;
+        private V_Vuelos_MainEntities db;
         Crypt c;
         public CambiarContraController()
         {
-            db = new V_Vuelos_Main_NotEncryptedEntities();
+            db = new V_Vuelos_MainEntities();
             c = new Crypt();
         }
 
