@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="V_Vuelos_Main_NotEncryptedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="testdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Aerolinea">
     <Key>
       <PropertyRef Name="id" />
@@ -129,17 +129,6 @@
     </Key>
     <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Tarjeta">
     <Key>
@@ -431,7 +420,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="V_Vuelos_Main_NotEncryptedEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="V_Vuelos_MainEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" />
     <EntitySet Name="Bitacora" EntityType="Self.Bitacora" />
     <EntitySet Name="Boleto" EntityType="Self.Boleto" />
@@ -447,7 +436,6 @@
     <EntitySet Name="Pregunta" EntityType="Self.Pregunta" />
     <EntitySet Name="Puerta" EntityType="Self.Puerta" />
     <EntitySet Name="Rol" EntityType="Self.Rol" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
     <EntitySet Name="TipoTarjeta" EntityType="Self.TipoTarjeta" />
     <EntitySet Name="TipoTransaccion" EntityType="Self.TipoTransaccion" />
@@ -533,185 +521,16 @@
       <End Role="TipoTarjeta" EntitySet="TipoTarjeta" />
       <End Role="Tarjeta" EntitySet="Tarjeta" />
     </AssociationSet>
-    <FunctionImport Name="seed" />
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
-    <FunctionImport Name="usf_base64_encode" ReturnType="Collection(String)">
-      <Parameter Name="value" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarAerolinea">
-      <Parameter Name="nombre" Mode="In" Type="String" />
-      <Parameter Name="imagen" Mode="In" Type="Binary" />
-      <Parameter Name="pais" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarBoleto">
-      <Parameter Name="formaPago" Mode="In" Type="Decimal" />
-      <Parameter Name="tipoTransaccion" Mode="In" Type="Decimal" />
-      <Parameter Name="vuelo" Mode="In" Type="String" />
-      <Parameter Name="cliente" Mode="In" Type="String" />
-      <Parameter Name="precio" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarConsecutivo">
-      <Parameter Name="valor" Mode="In" Type="Decimal" />
-      <Parameter Name="descripcion" Mode="In" Type="String" />
-      <Parameter Name="prefijo" Mode="In" Type="String" />
-      <Parameter Name="rangoInicial" Mode="In" Type="String" />
-      <Parameter Name="rangoFinal" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarError">
-      <Parameter Name="fecha" Mode="In" Type="String" />
-      <Parameter Name="hora" Mode="In" Type="String" />
-      <Parameter Name="numeroDeError" Mode="In" Type="String" />
-      <Parameter Name="mensajeDeError" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarPais">
-      <Parameter Name="nombre" Mode="In" Type="String" />
-      <Parameter Name="imagen" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarPuerta">
-      <Parameter Name="nombre" Mode="In" Type="String" />
-      <Parameter Name="estado" Mode="In" Type="Decimal" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarTarjeta">
-      <Parameter Name="numeroDeTarjeta" Mode="In" Type="String" />
-      <Parameter Name="fechaExpiracion" Mode="In" Type="String" />
-      <Parameter Name="tipoTarjeta" Mode="In" Type="Decimal" />
-      <Parameter Name="cliente" Mode="In" Type="String" />
-      <Parameter Name="cvv" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarUsuario">
-      <Parameter Name="nombreUsuario" Mode="In" Type="String" />
-      <Parameter Name="contrasena" Mode="In" Type="String" />
-      <Parameter Name="correo" Mode="In" Type="String" />
-      <Parameter Name="rol" Mode="In" Type="Decimal" />
-      <Parameter Name="preguntaSeguridad" Mode="In" Type="Decimal" />
-      <Parameter Name="respuestaSeguridad" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspAgregarVuelo">
-      <Parameter Name="fecha_partida" Mode="In" Type="String" />
-      <Parameter Name="hora_partida" Mode="In" Type="String" />
-      <Parameter Name="fecha_llegada" Mode="In" Type="String" />
-      <Parameter Name="hora_llegada" Mode="In" Type="String" />
-      <Parameter Name="aerolinea" Mode="In" Type="String" />
-      <Parameter Name="puerta" Mode="In" Type="String" />
-      <Parameter Name="estado" Mode="In" Type="Decimal" />
-      <Parameter Name="parteDe" Mode="In" Type="String" />
-      <Parameter Name="llegaA" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspBorrarAerolinea">
-      <Parameter Name="id" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspBorrarBoleto">
-      <Parameter Name="idBoleto" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspBorrarPais">
-      <Parameter Name="id" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspBorrarPuerta">
-      <Parameter Name="id" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspBorrarTarjeta">
-      <Parameter Name="numeroDeTarjeta" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspBorrarUsuario">
-      <Parameter Name="nombreUsuario" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspBorrarVuelo">
-      <Parameter Name="id" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="uspCambiarContrasenaUsuario">
       <Parameter Name="nombreUsuario" Mode="In" Type="String" />
       <Parameter Name="nuevaContrasena" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="uspEditarAerolinea">
-      <Parameter Name="id" Mode="In" Type="String" />
-      <Parameter Name="nombre" Mode="In" Type="String" />
-      <Parameter Name="imagen" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="uspEditarUsuario">
-      <Parameter Name="nombreUsuario" Mode="In" Type="String" />
-      <Parameter Name="correo" Mode="In" Type="String" />
-      <Parameter Name="rol" Mode="In" Type="Decimal" />
-    </FunctionImport>
-    <FunctionImport Name="uspEditarVuelo">
-      <Parameter Name="id" Mode="In" Type="String" />
-      <Parameter Name="fecha_partida" Mode="In" Type="String" />
-      <Parameter Name="hora_partida" Mode="In" Type="String" />
-      <Parameter Name="fecha_llegada" Mode="In" Type="String" />
-      <Parameter Name="hora_llegada" Mode="In" Type="String" />
-      <Parameter Name="aerolinea" Mode="In" Type="String" />
-      <Parameter Name="pais" Mode="In" Type="String" />
-      <Parameter Name="puerta" Mode="In" Type="String" />
-      <Parameter Name="estado" Mode="In" Type="Decimal" />
-      <Parameter Name="parteDe" Mode="In" Type="String" />
-      <Parameter Name="llegaA" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspModificarConsecutivo">
-      <Parameter Name="id" Mode="In" Type="Decimal" />
-      <Parameter Name="descripcion" Mode="In" Type="String" />
-      <Parameter Name="prefijo" Mode="In" Type="String" />
-      <Parameter Name="rangoFinal" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspRecuperarAerolineaPorPais" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarAerolineaPorPais_Result)">
+    <FunctionImport Name="uspRecuperarAerolineaPorPais" ReturnType="Collection(testdbModel.uspRecuperarAerolineaPorPais_Result)">
       <Parameter Name="idPais" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="uspRecuperarAerolineas" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarAerolineas_Result)" />
-    <FunctionImport Name="uspRecuperarBitacora" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarBitacora_Result)" />
-    <FunctionImport Name="uspRecuperarConsecutivos" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarConsecutivos_Result)" />
-    <FunctionImport Name="uspRecuperarEstadosPuerta" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarEstadosPuerta_Result)" />
-    <FunctionImport Name="uspRecuperarEstadosVuelo" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarEstadosVuelo_Result)" />
-    <FunctionImport Name="uspRecuperarFormasDePago" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarFormasDePago_Result)" />
-    <FunctionImport Name="uspRecuperarPaises" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarPaises_Result)" />
-    <FunctionImport Name="uspRecuperarPreguntasSeguridad" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarPreguntasSeguridad_Result)" />
-    <FunctionImport Name="uspRecuperarPuertas" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarPuertas_Result)" />
-    <FunctionImport Name="uspRecuperarPuertasActivas" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarPuertasActivas_Result)" />
-    <FunctionImport Name="uspRecuperarRoles" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarRoles_Result)" />
-    <FunctionImport Name="uspRecuperarTiposTransaccion" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarTiposTransaccion_Result)" />
-    <FunctionImport Name="uspRecuperarUsuario_Especifico" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarUsuario_Especifico_Result)">
-      <Parameter Name="idUsuario" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="uspRecuperarUsuario_General" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarUsuario_General_Result)" />
-    <FunctionImport Name="uspRecuperarVuelos" ReturnType="Collection(V_Vuelos_Main_NotEncryptedModel.uspRecuperarVuelos_Result)" />
+    <FunctionImport Name="uspRecuperarPuertasActivas" ReturnType="Collection(testdbModel.uspRecuperarPuertasActivas_Result)" />
+    <FunctionImport Name="uspRecuperarVuelos" ReturnType="Collection(testdbModel.uspRecuperarVuelos_Result)" />
   </EntityContainer>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
   <ComplexType Name="uspRecuperarAerolineaPorPais_Result">
     <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
@@ -719,83 +538,11 @@
     <Property Type="String" Name="CodigoPais" Nullable="true" MaxLength="25" />
     <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="1000" />
   </ComplexType>
-  <ComplexType Name="uspRecuperarAerolineas_Result">
-    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
-    <Property Type="Binary" Name="imagen" Nullable="false" />
-    <Property Type="String" Name="CodigoPais" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="1000" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarBitacora_Result">
-    <Property Type="Decimal" Name="id" Nullable="false" Precision="12" Scale="0" />
-    <Property Type="String" Name="fecha" Nullable="false" MaxLength="900" />
-    <Property Type="String" Name="hora" Nullable="false" MaxLength="900" />
-    <Property Type="String" Name="registro_detalle" Nullable="false" MaxLength="900" />
-    <Property Type="String" Name="usuario" Nullable="false" MaxLength="40" />
-    <Property Type="Decimal" Name="codigo_operacion" Nullable="false" Precision="2" Scale="0" />
-    <Property Type="String" Name="nombre_operacion" Nullable="true" MaxLength="900" />
-    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="900" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarConsecutivos_Result">
-    <Property Type="Decimal" Name="id" Nullable="false" Precision="8" Scale="0" />
-    <Property Type="String" Name="valor" Nullable="false" MaxLength="1000" />
-    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
-    <Property Type="String" Name="prefijo" Nullable="false" MaxLength="1000" />
-    <Property Type="String" Name="rango_inicial" Nullable="true" MaxLength="1000" />
-    <Property Type="String" Name="rango_final" Nullable="true" MaxLength="1000" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarEstadosPuerta_Result">
-    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
-    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarEstadosVuelo_Result">
-    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
-    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarFormasDePago_Result">
-    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
-    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarPaises_Result">
-    <Property Type="String" Name="id" Nullable="false" MaxLength="25" />
-    <Property Type="String" Name="nombre" Nullable="false" MaxLength="1000" />
-    <Property Type="Binary" Name="imagen" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarPreguntasSeguridad_Result">
-    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
-    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="900" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarPuertas_Result">
-    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="numero" Nullable="false" MaxLength="1000" />
-    <Property Type="Decimal" Name="NumeroEstado" Nullable="false" Precision="2" Scale="0" />
-    <Property Type="String" Name="descripcionEstado" Nullable="false" MaxLength="1000" />
-  </ComplexType>
   <ComplexType Name="uspRecuperarPuertasActivas_Result">
     <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="numero" Nullable="false" MaxLength="1000" />
     <Property Type="Decimal" Name="NumeroEstado" Nullable="false" Precision="2" Scale="0" />
     <Property Type="String" Name="DescripcionEstado" Nullable="false" MaxLength="1000" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarRoles_Result">
-    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
-    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="900" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarTiposTransaccion_Result">
-    <Property Type="Decimal" Name="id" Nullable="false" Precision="2" Scale="0" />
-    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarUsuario_Especifico_Result">
-    <Property Type="String" Name="usuario" Nullable="false" MaxLength="40" />
-    <Property Type="String" Name="correo" Nullable="false" MaxLength="900" />
-    <Property Type="Decimal" Name="NumeroRol" Nullable="true" Precision="2" Scale="0" />
-    <Property Type="String" Name="nombreRol" Nullable="false" MaxLength="900" />
-  </ComplexType>
-  <ComplexType Name="uspRecuperarUsuario_General_Result">
-    <Property Type="String" Name="usuario" Nullable="false" MaxLength="40" />
-    <Property Type="String" Name="correo" Nullable="false" MaxLength="900" />
-    <Property Type="Decimal" Name="NumeroRol" Nullable="true" Precision="2" Scale="0" />
-    <Property Type="String" Name="nombreRol" Nullable="false" MaxLength="900" />
   </ComplexType>
   <ComplexType Name="uspRecuperarVuelos_Result">
     <Property Type="String" Name="id" Nullable="false" MaxLength="10" />

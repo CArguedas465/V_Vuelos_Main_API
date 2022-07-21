@@ -15,12 +15,12 @@ namespace V_Vuelos_Main_API.Controllers
 {
     public class TipoTransaccionesController : ApiController
     {
-        V_Vuelos_Main_NotEncryptedEntities db;
+        V_Vuelos_MainEntities db;
         Crypt c;
 
         public TipoTransaccionesController()
         {
-            db = new V_Vuelos_Main_NotEncryptedEntities();
+            db = new V_Vuelos_MainEntities();
             c = new Crypt();
         }
 
