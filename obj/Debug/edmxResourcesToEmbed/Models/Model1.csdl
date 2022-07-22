@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="testdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="V_Vuelos_MainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Aerolinea">
     <Key>
       <PropertyRef Name="id" />
@@ -129,6 +129,17 @@
     </Key>
     <Property Name="id" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Tarjeta">
     <Key>
@@ -436,6 +447,7 @@
     <EntitySet Name="Pregunta" EntityType="Self.Pregunta" />
     <EntitySet Name="Puerta" EntityType="Self.Puerta" />
     <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
     <EntitySet Name="TipoTarjeta" EntityType="Self.TipoTarjeta" />
     <EntitySet Name="TipoTransaccion" EntityType="Self.TipoTransaccion" />
@@ -521,16 +533,57 @@
       <End Role="TipoTarjeta" EntitySet="TipoTarjeta" />
       <End Role="Tarjeta" EntitySet="Tarjeta" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(V_Vuelos_MainModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(V_Vuelos_MainModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
     <FunctionImport Name="uspCambiarContrasenaUsuario">
       <Parameter Name="nombreUsuario" Mode="In" Type="String" />
       <Parameter Name="nuevaContrasena" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="uspRecuperarAerolineaPorPais" ReturnType="Collection(testdbModel.uspRecuperarAerolineaPorPais_Result)">
+    <FunctionImport Name="uspRecuperarAerolineaPorPais" ReturnType="Collection(V_Vuelos_MainModel.uspRecuperarAerolineaPorPais_Result)">
       <Parameter Name="idPais" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="uspRecuperarPuertasActivas" ReturnType="Collection(testdbModel.uspRecuperarPuertasActivas_Result)" />
-    <FunctionImport Name="uspRecuperarVuelos" ReturnType="Collection(testdbModel.uspRecuperarVuelos_Result)" />
+    <FunctionImport Name="uspRecuperarPuertasActivas" ReturnType="Collection(V_Vuelos_MainModel.uspRecuperarPuertasActivas_Result)" />
+    <FunctionImport Name="uspRecuperarVuelos" ReturnType="Collection(V_Vuelos_MainModel.uspRecuperarVuelos_Result)" />
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="uspRecuperarAerolineaPorPais_Result">
     <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
