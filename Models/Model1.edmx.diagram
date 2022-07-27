@@ -4,47 +4,48 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a0ef82fc484f4a6b97d84229c73b1a5c" Name="Diagram1">
-        <EntityTypeShape EntityType="testdbModel.Aerolinea" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Bitacora" Width="1.5" PointX="10.5" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Boleto" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.ClienteToken" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.ClienteWeb" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Consecutivo" Width="1.5" PointX="9.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Error" Width="1.5" PointX="9.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.EstadoPuerta" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.EstadoVuelo" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.FormaPago" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Operacion" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Pais" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Pregunta" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Puerta" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Rol" Width="1.5" PointX="6" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Tarjeta" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.TipoTarjeta" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.TipoTransaccion" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Usuario" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Vuelo" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
-        <AssociationConnector Association="testdbModel.FK_Aerolinea_Pais" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Vuelo_Aerolinea" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Bitacora_Operacion" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Bitacora_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Boleto_ClienteToken" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Boleto_ClienteWeb" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Boleto_FormaPago" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Boleto_TipoTransaccion" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Boleto_Vuelo" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Tarjeta_ClienteToken" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_ClienteWeb_Pregunta" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Tarjeta_ClienteWeb" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Puerta_EstadoPuerta" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Vuelo_EstadoVuelo" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Vuelo_Pais1" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Vuelo_Pais2" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Usuario_Pregunta" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Vuelo_Puerta" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Usuario_Rol" ManuallyRouted="false" />
-        <AssociationConnector Association="testdbModel.FK_Tarjeta_TipoTarjeta" ManuallyRouted="false" />
+      <Diagram DiagramId="e148baa19e2d4292b224744eeb7619ad" Name="Diagram1">
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Aerolinea" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Bitacora" Width="1.5" PointX="10.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Boleto" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.ClienteToken" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.ClienteWeb" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Consecutivo" Width="1.5" PointX="9.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Error" Width="1.5" PointX="9.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.EstadoPuerta" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.EstadoVuelo" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.FormaPago" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Operacion" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Pais" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Pregunta" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Puerta" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Rol" Width="1.5" PointX="6" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Tarjeta" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.TipoTarjeta" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.TipoTransaccion" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Usuario" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="V_Vuelos_MainModel.Vuelo" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Aerolinea_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Vuelo_Aerolinea" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Bitacora_Operacion" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Bitacora_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Boleto_ClienteToken" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Boleto_ClienteWeb" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Boleto_FormaPago" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Boleto_TipoTransaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Boleto_Vuelo" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Tarjeta_ClienteToken" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_ClienteWeb_Pregunta" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Tarjeta_ClienteWeb" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Puerta_EstadoPuerta" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Vuelo_EstadoVuelo" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Vuelo_Pais1" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Vuelo_Pais2" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Usuario_Pregunta" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Vuelo_Puerta" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Usuario_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="V_Vuelos_MainModel.FK_Tarjeta_TipoTarjeta" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
