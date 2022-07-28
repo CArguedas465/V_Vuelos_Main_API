@@ -123,7 +123,7 @@ namespace V_Vuelos_Main_API.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = aerolinea.id }, aerolinea);
+            return Ok(CreatedAtRoute("DefaultApi", new { id = aerolinea.id }, aerolinea));
         }
 
         // DELETE: api/Aerolineas/5
