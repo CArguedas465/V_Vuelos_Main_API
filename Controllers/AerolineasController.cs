@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -53,6 +54,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/Aerolineas/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutAerolinea(string id, Aerolinea aerolinea)
         {
             if (!ModelState.IsValid)
@@ -89,6 +91,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/Aerolineas
         [ResponseType(typeof(Aerolinea))]
+        [DisableCors]
         public IHttpActionResult PostAerolinea(Aerolinea aerolinea)
         {
             if (!ModelState.IsValid)
@@ -128,6 +131,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/Aerolineas/5
         [ResponseType(typeof(Aerolinea))]
+        [DisableCors]
         public IHttpActionResult DeleteAerolinea(string id)
         {
             Aerolinea aerolinea = db.Aerolinea.Find(id);

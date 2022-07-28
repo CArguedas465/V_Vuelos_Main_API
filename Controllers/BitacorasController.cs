@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -59,6 +60,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/Bitacoras/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutBitacora(decimal id, Bitacora bitacora)
         {
             if (!ModelState.IsValid)
@@ -99,6 +101,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/Bitacoras
         [ResponseType(typeof(Bitacora))]
+        [DisableCors]
         public IHttpActionResult PostBitacora(Bitacora bitacora)
         {
             if (!ModelState.IsValid)
@@ -119,6 +122,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/Bitacoras/5
         [ResponseType(typeof(Bitacora))]
+        [DisableCors]
         public IHttpActionResult DeleteBitacora(decimal id)
         {
             Bitacora bitacora = db.Bitacora.Find(id);

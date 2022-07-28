@@ -14,16 +14,7 @@ namespace V_Vuelos_Main_API.Models
     
     public partial class Rol
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rol()
-        {
-            this.Usuario = new HashSet<Usuario>();
-        }
-    
         public decimal id { get; set; }
         public string descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario { get; set; }
     }
 }
