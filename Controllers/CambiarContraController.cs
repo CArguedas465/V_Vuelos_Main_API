@@ -25,6 +25,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/CambiarContra
         [ResponseType(typeof(Usuario))]
+        [DisableCors]
         public IHttpActionResult PutContrasenna(string id, Usuario usuario)
         {
             if (!ModelState.IsValid)

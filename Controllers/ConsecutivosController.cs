@@ -75,6 +75,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/Consecutivos/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutConsecutivo(decimal id, Consecutivo consecutivo)
         {
             if (!ModelState.IsValid)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -54,6 +55,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/EstadoVueloes/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutEstadoVuelo(decimal id, EstadoVuelo estadoVuelo)
         {
             if (!ModelState.IsValid)
@@ -90,6 +92,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/EstadoVueloes
         [ResponseType(typeof(EstadoVuelo))]
+        [DisableCors]
         public IHttpActionResult PostEstadoVuelo(EstadoVuelo estadoVuelo)
         {
             if (!ModelState.IsValid)
@@ -107,6 +110,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/EstadoVueloes/5
         [ResponseType(typeof(EstadoVuelo))]
+        [DisableCors]
         public IHttpActionResult DeleteEstadoVuelo(decimal id)
         {
             EstadoVuelo estadoVuelo = db.EstadoVuelo.Find(id);
