@@ -125,7 +125,9 @@ namespace V_Vuelos_Main_API.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = puerta.id }, puerta);
+            var nuevoEstado = db.EstadoPuerta.Find(puerta.estado);
+
+            return CreatedAtRoute("DefaultApi", new { id = puerta.id, estado = nuevoEstado.descripcion }, puerta);
         }
 
         // DELETE: api/Puertas/5

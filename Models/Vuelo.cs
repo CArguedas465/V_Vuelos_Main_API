@@ -24,5 +24,6 @@ namespace V_Vuelos_Main_API.Models
         public decimal estado { get; set; }
         public string parte_de { get; set; }
         public string llega_a { get; set; }
+        public bool saliendo { get; set; }
     }
 }

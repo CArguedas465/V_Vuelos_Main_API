@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="V_Vuelos_MainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="testdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Aerolinea">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
-    <Property Name="Imagen" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Imagen" Type="varchar(max)" Nullable="false" />
     <Property Name="pais" Type="varchar" MaxLength="25" />
   </EntityType>
   <EntityType Name="Bitacora">
@@ -14,7 +14,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="decimal" Precision="12" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fecha" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
     <Property Name="hora" Type="varchar" MaxLength="900" Nullable="false" />
     <Property Name="registro_detalle" Type="varchar" MaxLength="900" Nullable="false" />
     <Property Name="usuario" Type="varchar" MaxLength="40" Nullable="false" />
@@ -58,7 +58,7 @@
     <Property Name="id" Type="decimal" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="valor" Type="varchar" MaxLength="1000" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
-    <Property Name="prefijo" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="prefijo" Type="varchar" MaxLength="1000" />
     <Property Name="rango_inicial" Type="varchar" MaxLength="1000" />
     <Property Name="rango_final" Type="varchar" MaxLength="1000" />
   </EntityType>
@@ -106,7 +106,7 @@
     </Key>
     <Property Name="id" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="1000" Nullable="false" />
-    <Property Name="imagen" Type="varbinary(max)" Nullable="false" />
+    <Property Name="imagen" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Pregunta">
     <Key>
@@ -189,6 +189,7 @@
     <Property Name="estado" Type="decimal" Precision="2" Scale="0" Nullable="false" />
     <Property Name="parte_de" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="llega_a" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="saliendo" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="FK_Aerolinea_Pais">
     <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
@@ -470,7 +471,7 @@
   </Function>
   <Function Name="uspRecuperarPuertasActivas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="uspRecuperarVuelos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <EntityContainer Name="V_Vuelos_MainModelStoreContainer">
+  <EntityContainer Name="testdbModelStoreContainer">
     <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Boleto" EntityType="Self.Boleto" Schema="dbo" store:Type="Tables" />

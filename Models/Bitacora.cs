@@ -15,7 +15,7 @@ namespace V_Vuelos_Main_API.Models
     public partial class Bitacora
     {
         public decimal id { get; set; }
-        public string fecha { get; set; }
+        public System.DateTime fecha { get; set; }
         public string hora { get; set; }
         public string registro_detalle { get; set; }
         public string usuario { get; set; }

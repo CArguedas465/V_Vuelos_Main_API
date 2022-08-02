@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Models;
 using V_Vuelos_Main_API.Crypto;
+using System.Web.Http.Cors;
 
 namespace V_Vuelos_Main_API.Controllers
 {
@@ -58,6 +59,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/Usuarios/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutUsuario(string id, Usuario usuario)
         {
             if (!ModelState.IsValid)
@@ -97,6 +99,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/Usuarios
         [ResponseType(typeof(Usuario))]
+        [DisableCors]
         public IHttpActionResult PostUsuario(Usuario usuario)
         {
             if (!ModelState.IsValid)
@@ -131,6 +134,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/Usuarios/5
         [ResponseType(typeof(Usuario))]
+        [DisableCors]
         public IHttpActionResult DeleteUsuario(string id)
         {
             Usuario usuario = db.Usuario.Find(id);

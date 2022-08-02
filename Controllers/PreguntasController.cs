@@ -10,6 +10,7 @@ using System.Data.Entity.Core.Objects;
 using System.Web.Http.Description;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity;
+using System.Web.Http.Cors;
 
 namespace V_Vuelos_Main_API.Controllers
 {
@@ -53,6 +54,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/Preguntas
         [ResponseType(typeof(Pregunta))]
+        [DisableCors]
         public IHttpActionResult Post(Pregunta pregunta)
         {
             if (!ModelState.IsValid)
@@ -82,6 +84,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/Preguntas/5
         [ResponseType(typeof(Pregunta))]
+        [DisableCors]
         public IHttpActionResult Put(int id, Pregunta pregunta)
         {
             if (!ModelState.IsValid)
@@ -114,6 +117,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/Preguntas/5
         [ResponseType(typeof(Pregunta))]
+        [DisableCors]
         public IHttpActionResult Delete(int id)
         {
             Pregunta pregunta = db.Pregunta.Find(id);

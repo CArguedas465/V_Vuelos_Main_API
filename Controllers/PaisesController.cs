@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -53,6 +54,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/Paises/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutPais(string id, Pais pais)
         {
             if (!ModelState.IsValid)
@@ -84,11 +86,12 @@ namespace V_Vuelos_Main_API.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(pais);
         }
 
         // POST: api/Paises
         [ResponseType(typeof(Pais))]
+        [DisableCors]
         public IHttpActionResult PostPais(Pais pais)
         {
             
@@ -127,6 +130,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/Paises/5
         [ResponseType(typeof(Pais))]
+        [DisableCors]
         public IHttpActionResult DeletePais(string id)
         {
             Pais pais = db.Pais.Find(id);

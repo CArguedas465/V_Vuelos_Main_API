@@ -31,7 +31,6 @@ namespace V_Vuelos_Main_API.Controllers
 
             foreach (var bitacora in resultado)
             {
-                bitacora.fecha = c.desencriptar(bitacora.fecha);
                 bitacora.hora = c.desencriptar(bitacora.hora);
                 bitacora.registro_detalle = c.desencriptar(bitacora.registro_detalle);
                 bitacora.descripcion = c.desencriptar(bitacora.descripcion);
@@ -50,7 +49,6 @@ namespace V_Vuelos_Main_API.Controllers
                 return NotFound();
             }
 
-            bitacora.fecha = c.desencriptar(bitacora.fecha);
             bitacora.hora = c.desencriptar(bitacora.hora);
             bitacora.registro_detalle = c.desencriptar(bitacora.registro_detalle);
             bitacora.descripcion = c.desencriptar(bitacora.descripcion);
@@ -73,7 +71,6 @@ namespace V_Vuelos_Main_API.Controllers
                 return BadRequest();
             }
 
-            bitacora.fecha = c.encriptar(bitacora.fecha);
             bitacora.hora = c.encriptar(bitacora.hora);
             bitacora.registro_detalle = c.encriptar(bitacora.registro_detalle);
             bitacora.descripcion = c.encriptar(bitacora.descripcion);
@@ -109,7 +106,6 @@ namespace V_Vuelos_Main_API.Controllers
                 return BadRequest(ModelState);
             }
 
-            bitacora.fecha = c.encriptar(bitacora.fecha);
             bitacora.hora = c.encriptar(bitacora.hora);
             bitacora.registro_detalle = c.encriptar(bitacora.registro_detalle);
             bitacora.descripcion = c.encriptar(bitacora.descripcion);
