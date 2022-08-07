@@ -19,7 +19,7 @@
     <Property Name="registro_detalle" Type="varchar" MaxLength="900" Nullable="false" />
     <Property Name="usuario" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="operacion" Type="decimal" Precision="2" Scale="0" Nullable="false" />
-    <Property Name="descripcion" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Boleto">
     <Key>
@@ -462,6 +462,10 @@
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspBuscarVuelos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="date" Type="date" Mode="In" />
+    <Parameter Name="pais" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="uspCambiarContrasenaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
     <Parameter Name="nuevaContrasena" Type="varchar" Mode="In" />
@@ -471,6 +475,9 @@
   </Function>
   <Function Name="uspRecuperarPuertasActivas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="uspRecuperarVuelos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspRecuperarVuelos_EntranteSaliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="modo" Type="bit" Mode="In" />
+  </Function>
   <EntityContainer Name="testdbModelStoreContainer">
     <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />

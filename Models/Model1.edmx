@@ -24,7 +24,7 @@
           <Property Name="registro_detalle" Type="varchar" MaxLength="900" Nullable="false" />
           <Property Name="usuario" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="operacion" Type="decimal" Precision="2" Scale="0" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="900" Nullable="false" />
+          <Property Name="descripcion" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Boleto">
           <Key>
@@ -467,6 +467,10 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspBuscarVuelos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="pais" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="uspCambiarContrasenaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
           <Parameter Name="nuevaContrasena" Type="varchar" Mode="In" />
@@ -476,6 +480,9 @@
         </Function>
         <Function Name="uspRecuperarPuertasActivas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uspRecuperarVuelos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspRecuperarVuelos_EntranteSaliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="modo" Type="bit" Mode="In" />
+        </Function>
         <EntityContainer Name="testdbModelStoreContainer">
           <EntitySet Name="Aerolinea" EntityType="Self.Aerolinea" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
@@ -603,7 +610,7 @@
           <Property Name="registro_detalle" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="usuario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="operacion" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           </EntityType>
         <EntityType Name="Boleto">
           <Key>
@@ -1147,6 +1154,10 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="uspBuscarVuelos" ReturnType="Collection(testdbModel.uspBuscarVuelos_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="pais" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="uspCambiarContrasenaUsuario">
             <Parameter Name="nombreUsuario" Mode="In" Type="String" />
             <Parameter Name="nuevaContrasena" Mode="In" Type="String" />
@@ -1156,6 +1167,9 @@
           </FunctionImport>
           <FunctionImport Name="uspRecuperarPuertasActivas" ReturnType="Collection(testdbModel.uspRecuperarPuertasActivas_Result)" />
           <FunctionImport Name="uspRecuperarVuelos" ReturnType="Collection(testdbModel.uspRecuperarVuelos_Result)" />
+          <FunctionImport Name="uspRecuperarVuelos_EntranteSaliente" ReturnType="Collection(testdbModel.uspRecuperarVuelos_EntranteSaliente_Result)">
+            <Parameter Name="modo" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1167,6 +1181,24 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspBuscarVuelos_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="fecha_partida" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="hora_partida" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="fecha_llegada" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="hora_llegada" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="codigo_aerolinea" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nombre_aerolinea" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="codigo_puerta" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="numero_puerta" Nullable="true" MaxLength="1000" />
+          <Property Type="Decimal" Name="codigo_estado" Nullable="false" Precision="2" Scale="0" />
+          <Property Type="String" Name="descripcion_estado" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="codigo_pais_parte" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="nombre_pais_parte" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="codigo_pais_llega" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="nombre_pais_llega" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="saliendo" Nullable="false" />
         </ComplexType>
         <ComplexType Name="uspRecuperarAerolineaPorPais_Result">
           <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
@@ -1197,6 +1229,25 @@
           <Property Type="String" Name="nombre_pais_parte" Nullable="true" MaxLength="1000" />
           <Property Type="String" Name="codigo_pais_llega" Nullable="false" MaxLength="25" />
           <Property Type="String" Name="nombre_pais_llega" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="saliendo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspRecuperarVuelos_EntranteSaliente_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="fecha_partida" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="hora_partida" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="fecha_llegada" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="hora_llegada" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="codigo_aerolinea" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nombre_aerolinea" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="codigo_puerta" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="numero_puerta" Nullable="true" MaxLength="1000" />
+          <Property Type="Decimal" Name="codigo_estado" Nullable="false" Precision="2" Scale="0" />
+          <Property Type="String" Name="descripcion_estado" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="codigo_pais_parte" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="nombre_pais_parte" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="codigo_pais_llega" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="nombre_pais_llega" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="saliendo" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1440,6 +1491,28 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="testdbModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="testdbModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="uspBuscarVuelos" FunctionName="testdbModel.Store.uspBuscarVuelos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testdbModel.uspBuscarVuelos_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha_partida" ColumnName="fecha_partida" />
+                <ScalarProperty Name="hora_partida" ColumnName="hora_partida" />
+                <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+                <ScalarProperty Name="hora_llegada" ColumnName="hora_llegada" />
+                <ScalarProperty Name="codigo_aerolinea" ColumnName="codigo_aerolinea" />
+                <ScalarProperty Name="nombre_aerolinea" ColumnName="nombre_aerolinea" />
+                <ScalarProperty Name="codigo_puerta" ColumnName="codigo_puerta" />
+                <ScalarProperty Name="numero_puerta" ColumnName="numero_puerta" />
+                <ScalarProperty Name="codigo_estado" ColumnName="codigo_estado" />
+                <ScalarProperty Name="descripcion_estado" ColumnName="descripcion_estado" />
+                <ScalarProperty Name="codigo_pais_parte" ColumnName="codigo_pais_parte" />
+                <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
+                <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
+                <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+                <ScalarProperty Name="saliendo" ColumnName="saliendo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="uspCambiarContrasenaUsuario" FunctionName="testdbModel.Store.uspCambiarContrasenaUsuario" />
           <FunctionImportMapping FunctionImportName="uspRecuperarAerolineaPorPais" FunctionName="testdbModel.Store.uspRecuperarAerolineaPorPais">
             <ResultMapping>
@@ -1480,6 +1553,29 @@
                 <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
                 <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
                 <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+                <ScalarProperty Name="saliendo" ColumnName="saliendo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspRecuperarVuelos_EntranteSaliente" FunctionName="testdbModel.Store.uspRecuperarVuelos_EntranteSaliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testdbModel.uspRecuperarVuelos_EntranteSaliente_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha_partida" ColumnName="fecha_partida" />
+                <ScalarProperty Name="hora_partida" ColumnName="hora_partida" />
+                <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+                <ScalarProperty Name="hora_llegada" ColumnName="hora_llegada" />
+                <ScalarProperty Name="codigo_aerolinea" ColumnName="codigo_aerolinea" />
+                <ScalarProperty Name="nombre_aerolinea" ColumnName="nombre_aerolinea" />
+                <ScalarProperty Name="codigo_puerta" ColumnName="codigo_puerta" />
+                <ScalarProperty Name="numero_puerta" ColumnName="numero_puerta" />
+                <ScalarProperty Name="codigo_estado" ColumnName="codigo_estado" />
+                <ScalarProperty Name="descripcion_estado" ColumnName="descripcion_estado" />
+                <ScalarProperty Name="codigo_pais_parte" ColumnName="codigo_pais_parte" />
+                <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
+                <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
+                <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+                <ScalarProperty Name="saliendo" ColumnName="saliendo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

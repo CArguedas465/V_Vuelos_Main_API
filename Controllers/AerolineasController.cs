@@ -126,9 +126,9 @@ namespace V_Vuelos_Main_API.Controllers
                 }
             }
 
-            var pais = db.Pais.Find(aerolinea.pais);
+            var paisDesc = c.desencriptar(db.Pais.Find(aerolinea.pais).nombre);
 
-            return Ok(CreatedAtRoute("DefaultApi", new { id = aerolinea.id, pais = pais.nombre }, aerolinea));
+            return CreatedAtRoute("DefaultApi", new { id = aerolinea.id, pais = paisDesc }, aerolinea);
         }
 
         // DELETE: api/Aerolineas/5

@@ -11,7 +11,7 @@ namespace V_Vuelos_Main_API.Models
 {
     using System;
     
-    public partial class uspRecuperarVuelos_Result
+    public partial class uspBuscarVuelos_Result
     {
         public string id { get; set; }
         public string fecha_partida { get; set; }

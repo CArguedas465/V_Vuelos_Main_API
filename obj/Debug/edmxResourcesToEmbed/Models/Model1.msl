@@ -237,6 +237,28 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="testdbModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="testdbModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="uspBuscarVuelos" FunctionName="testdbModel.Store.uspBuscarVuelos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="testdbModel.uspBuscarVuelos_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha_partida" ColumnName="fecha_partida" />
+          <ScalarProperty Name="hora_partida" ColumnName="hora_partida" />
+          <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+          <ScalarProperty Name="hora_llegada" ColumnName="hora_llegada" />
+          <ScalarProperty Name="codigo_aerolinea" ColumnName="codigo_aerolinea" />
+          <ScalarProperty Name="nombre_aerolinea" ColumnName="nombre_aerolinea" />
+          <ScalarProperty Name="codigo_puerta" ColumnName="codigo_puerta" />
+          <ScalarProperty Name="numero_puerta" ColumnName="numero_puerta" />
+          <ScalarProperty Name="codigo_estado" ColumnName="codigo_estado" />
+          <ScalarProperty Name="descripcion_estado" ColumnName="descripcion_estado" />
+          <ScalarProperty Name="codigo_pais_parte" ColumnName="codigo_pais_parte" />
+          <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
+          <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
+          <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+          <ScalarProperty Name="saliendo" ColumnName="saliendo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspCambiarContrasenaUsuario" FunctionName="testdbModel.Store.uspCambiarContrasenaUsuario" />
     <FunctionImportMapping FunctionImportName="uspRecuperarAerolineaPorPais" FunctionName="testdbModel.Store.uspRecuperarAerolineaPorPais">
       <ResultMapping>
@@ -277,6 +299,29 @@
           <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
           <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
           <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+          <ScalarProperty Name="saliendo" ColumnName="saliendo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspRecuperarVuelos_EntranteSaliente" FunctionName="testdbModel.Store.uspRecuperarVuelos_EntranteSaliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="testdbModel.uspRecuperarVuelos_EntranteSaliente_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha_partida" ColumnName="fecha_partida" />
+          <ScalarProperty Name="hora_partida" ColumnName="hora_partida" />
+          <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+          <ScalarProperty Name="hora_llegada" ColumnName="hora_llegada" />
+          <ScalarProperty Name="codigo_aerolinea" ColumnName="codigo_aerolinea" />
+          <ScalarProperty Name="nombre_aerolinea" ColumnName="nombre_aerolinea" />
+          <ScalarProperty Name="codigo_puerta" ColumnName="codigo_puerta" />
+          <ScalarProperty Name="numero_puerta" ColumnName="numero_puerta" />
+          <ScalarProperty Name="codigo_estado" ColumnName="codigo_estado" />
+          <ScalarProperty Name="descripcion_estado" ColumnName="descripcion_estado" />
+          <ScalarProperty Name="codigo_pais_parte" ColumnName="codigo_pais_parte" />
+          <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
+          <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
+          <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+          <ScalarProperty Name="saliendo" ColumnName="saliendo" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

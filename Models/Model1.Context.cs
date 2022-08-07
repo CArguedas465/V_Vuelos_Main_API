@@ -152,6 +152,19 @@ namespace V_Vuelos_Main_API.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
+        public virtual ObjectResult<uspBuscarVuelos_Result> uspBuscarVuelos(Nullable<System.DateTime> date, string pais)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var paisParameter = pais != null ?
+                new ObjectParameter("pais", pais) :
+                new ObjectParameter("pais", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspBuscarVuelos_Result>("uspBuscarVuelos", dateParameter, paisParameter);
+        }
+    
         public virtual int uspCambiarContrasenaUsuario(string nombreUsuario, string nuevaContrasena)
         {
             var nombreUsuarioParameter = nombreUsuario != null ?
@@ -182,6 +195,15 @@ namespace V_Vuelos_Main_API.Models
         public virtual ObjectResult<uspRecuperarVuelos_Result> uspRecuperarVuelos()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspRecuperarVuelos_Result>("uspRecuperarVuelos");
+        }
+    
+        public virtual ObjectResult<uspRecuperarVuelos_EntranteSaliente_Result> uspRecuperarVuelos_EntranteSaliente(Nullable<bool> modo)
+        {
+            var modoParameter = modo.HasValue ?
+                new ObjectParameter("modo", modo) :
+                new ObjectParameter("modo", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspRecuperarVuelos_EntranteSaliente_Result>("uspRecuperarVuelos_EntranteSaliente", modoParameter);
         }
     }
 }

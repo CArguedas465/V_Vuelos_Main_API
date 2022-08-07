@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -110,8 +111,23 @@ namespace V_Vuelos_Main_API.Controllers
             bitacora.registro_detalle = c.encriptar(bitacora.registro_detalle);
             bitacora.descripcion = c.encriptar(bitacora.descripcion);
 
-            db.Bitacora.Add(bitacora);
-            db.SaveChanges();
+           
+            try 
+            {
+                db.Bitacora.Add(bitacora);
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var errors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in errors.ValidationErrors)
+                    {
+                        // get the error message 
+                        string errorMessage = validationError.ErrorMessage;
+                    }
+                }
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = bitacora.id }, bitacora);
         }
