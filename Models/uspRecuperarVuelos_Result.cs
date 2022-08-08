@@ -28,5 +28,6 @@ namespace V_Vuelos_Main_API.Models
         public string nombre_pais_parte { get; set; }
         public string codigo_pais_llega { get; set; }
         public string nombre_pais_llega { get; set; }
+        public bool saliendo { get; set; }
     }
 }

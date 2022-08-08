@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Models;
 using V_Vuelos_Main_API.Crypto;
+using System.Web.Http.Cors;
 
 namespace V_Vuelos_Main_API.Controllers
 {
@@ -54,6 +55,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/TipoTarjetas/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutTipoTarjeta(decimal id, TipoTarjeta tipoTarjeta)
         {
             if (!ModelState.IsValid)
@@ -90,6 +92,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/TipoTarjetas
         [ResponseType(typeof(TipoTarjeta))]
+        [DisableCors]
         public IHttpActionResult PostTipoTarjeta(TipoTarjeta tipoTarjeta)
         {
             if (!ModelState.IsValid)
@@ -107,6 +110,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/TipoTarjetas/5
         [ResponseType(typeof(TipoTarjeta))]
+        [DisableCors]
         public IHttpActionResult DeleteTipoTarjeta(decimal id)
         {
             TipoTarjeta tipoTarjeta = db.TipoTarjeta.Find(id);

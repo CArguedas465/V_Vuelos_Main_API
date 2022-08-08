@@ -196,3 +196,6 @@ C:\Users\user\Desktop\New folder\V_Vuelos_Main_API\obj\Debug\V_Vuelos_Main_API.c
 C:\Users\user\Desktop\New folder\V_Vuelos_Main_API\obj\Debug\V_Vuelos_Main_API.csproj.CopyComplete
 C:\Users\user\Desktop\New folder\V_Vuelos_Main_API\obj\Debug\V_Vuelos_Main_API.dll
 C:\Users\user\Desktop\New folder\V_Vuelos_Main_API\obj\Debug\V_Vuelos_Main_API.pdb
+C:\Users\user\Desktop\New folder\V_Vuelos_Main_API\bin\System.Web.Cors.dll
+C:\Users\user\Desktop\New folder\V_Vuelos_Main_API\bin\System.Web.Http.Cors.dll
+C:\Users\user\Desktop\New folder\V_Vuelos_Main_API\bin\System.Web.Http.Cors.xml

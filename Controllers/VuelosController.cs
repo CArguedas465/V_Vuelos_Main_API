@@ -139,7 +139,36 @@ namespace V_Vuelos_Main_API.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = vuelo.id }, vuelo);
+            var aerolinea = db.Aerolinea.Find(vuelo.aerolinea);
+            var puerta = db.Puerta.Find(vuelo.puerta);
+            var estado = db.EstadoVuelo.Find(vuelo.estado);
+            var parte_de = db.Pais.Find(vuelo.parte_de);
+            var llega_a = db.Pais.Find(vuelo.llega_a);
+
+            var fechaPartidaDesc = c.desencriptar(vuelo.fecha_partida);
+            var horaPartidaDesc = c.desencriptar(vuelo.hora_partida);
+            var fechaLlegadaDesc = c.desencriptar(vuelo.fecha_llegada);
+            var horaLlegadaDesc = c.desencriptar(vuelo.hora_llegada);
+
+            var aerolineaDesc = c.desencriptar(aerolinea.nombre);
+            var puertaDesc = c.desencriptar(puerta.numero);
+            var estadoDesc = c.desencriptar(estado.descripcion);
+            var parteDesc = c.desencriptar(parte_de.nombre);
+            var llegaDesc = c.desencriptar(llega_a.nombre);
+
+            return  Ok(new
+            {
+                id = vuelo.id,
+                fechaPartidaDesc,
+                horaPartidaDesc,
+                fechaLlegadaDesc,
+                horaLlegadaDesc,
+                aerolineaDesc,
+                puertaDesc,
+                estadoDesc,
+                parteDesc,
+                llegaDesc
+            });
         }
 
         // DELETE: api/Vuelos/5

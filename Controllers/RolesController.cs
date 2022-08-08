@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -54,6 +55,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/Roles
         [ResponseType(typeof(Pregunta))]
+        [DisableCors]
         public IHttpActionResult Post(Rol rol)
         {
             if (!ModelState.IsValid)
@@ -83,6 +85,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/Roles/5
         [ResponseType(typeof(Pregunta))]
+        [DisableCors]
         public IHttpActionResult Put(int id, Rol rol)
         {
             if (!ModelState.IsValid)
@@ -116,6 +119,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/Roles/5
         [ResponseType(typeof(Pregunta))]
+        [DisableCors]
         public IHttpActionResult Delete(int id)
         {
             Rol rol = db.Rol.Find(id);

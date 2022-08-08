@@ -10,20 +10,24 @@
 namespace V_Vuelos_Main_API.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Vuelo
+    public partial class uspBuscarVuelos_Result
     {
         public string id { get; set; }
         public string fecha_partida { get; set; }
         public string hora_partida { get; set; }
         public string fecha_llegada { get; set; }
         public string hora_llegada { get; set; }
-        public string aerolinea { get; set; }
-        public string puerta { get; set; }
-        public decimal estado { get; set; }
-        public string parte_de { get; set; }
-        public string llega_a { get; set; }
+        public string codigo_aerolinea { get; set; }
+        public string nombre_aerolinea { get; set; }
+        public string codigo_puerta { get; set; }
+        public string numero_puerta { get; set; }
+        public decimal codigo_estado { get; set; }
+        public string descripcion_estado { get; set; }
+        public string codigo_pais_parte { get; set; }
+        public string nombre_pais_parte { get; set; }
+        public string codigo_pais_llega { get; set; }
+        public string nombre_pais_llega { get; set; }
         public bool saliendo { get; set; }
     }
 }

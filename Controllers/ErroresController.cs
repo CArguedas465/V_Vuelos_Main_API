@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -59,6 +60,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/Errores/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutError(decimal id, Error error)
         {
             if (!ModelState.IsValid)
@@ -99,6 +101,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/Errores
         [ResponseType(typeof(Error))]
+        [DisableCors]
         public IHttpActionResult PostError(Error error)
         {
             if (!ModelState.IsValid)
@@ -119,6 +122,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/Errores/5
         [ResponseType(typeof(Error))]
+        [DisableCors]
         public IHttpActionResult DeleteError(decimal id)
         {
             Error error = db.Error.Find(id);

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -117,11 +118,12 @@ namespace V_Vuelos_Main_API.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(consecutivo);
         }
 
         // POST: api/Consecutivos
         [ResponseType(typeof(Consecutivo))]
+        [DisableCors]
         public IHttpActionResult PostConsecutivo(Consecutivo consecutivo)
         {
             if (!ModelState.IsValid)
@@ -152,6 +154,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/Consecutivos/5
         [ResponseType(typeof(Consecutivo))]
+        [DisableCors]
         public IHttpActionResult DeleteConsecutivo(decimal id)
         {
             Consecutivo consecutivo = db.Consecutivo.Find(id);

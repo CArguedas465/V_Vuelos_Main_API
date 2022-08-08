@@ -172,7 +172,11 @@
     <Compile Include="Controllers\AerolineasController.cs" />
     <Compile Include="Controllers\AerolineasPorPaisController.cs" />
     <Compile Include="Controllers\BitacorasController.cs" />
+    <Compile Include="Controllers\BusquedaBitacorasController.cs" />
+    <Compile Include="Controllers\BusquedaVuelosController.cs" />
+    <Compile Include="Controllers\VuelosEntrantesSalientesController.cs" />
     <Compile Include="Controllers\CambiarContraController.cs" />
+    <Compile Include="Controllers\ClientesWebController.cs" />
     <Compile Include="Controllers\ConsecutivosController.cs" />
     <Compile Include="Controllers\ErroresController.cs" />
     <Compile Include="Controllers\EstadoPuertasController.cs" />
@@ -204,6 +208,8 @@
     <Compile Include="Models\Boleto.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BusquedaBitacora.cs" />
+    <Compile Include="Models\BusquedaVuelos.cs" />
     <Compile Include="Models\ClienteToken.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -273,10 +279,16 @@
     <Compile Include="Models\TipoTransaccion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\uspBuscarVuelos_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\uspRecuperarAerolineaPorPais_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\uspRecuperarPuertasActivas_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\uspRecuperarVuelos_EntranteSaliente_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\uspRecuperarVuelos_Result.cs">

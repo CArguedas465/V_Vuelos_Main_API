@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="V_Vuelos_MainModelStoreContainer" CdmEntityContainer="V_Vuelos_MainEntities">
+  <EntityContainerMapping StorageEntityContainer="testdbModelStoreContainer" CdmEntityContainer="V_Vuelos_MainEntities">
     <EntitySetMapping Name="Aerolinea">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Aerolinea">
+      <EntityTypeMapping TypeName="testdbModel.Aerolinea">
         <MappingFragment StoreEntitySet="Aerolinea">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Bitacora">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Bitacora">
+      <EntityTypeMapping TypeName="testdbModel.Bitacora">
         <MappingFragment StoreEntitySet="Bitacora">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
@@ -25,7 +25,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Boleto">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Boleto">
+      <EntityTypeMapping TypeName="testdbModel.Boleto">
         <MappingFragment StoreEntitySet="Boleto">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="forma_pago" ColumnName="forma_pago" />
@@ -37,14 +37,14 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ClienteToken">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.ClienteToken">
+      <EntityTypeMapping TypeName="testdbModel.ClienteToken">
         <MappingFragment StoreEntitySet="ClienteToken">
           <ScalarProperty Name="correo" ColumnName="correo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ClienteWeb">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.ClienteWeb">
+      <EntityTypeMapping TypeName="testdbModel.ClienteWeb">
         <MappingFragment StoreEntitySet="ClienteWeb">
           <ScalarProperty Name="usuario" ColumnName="usuario" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -58,7 +58,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Consecutivo">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Consecutivo">
+      <EntityTypeMapping TypeName="testdbModel.Consecutivo">
         <MappingFragment StoreEntitySet="Consecutivo">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="valor" ColumnName="valor" />
@@ -70,7 +70,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Error">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Error">
+      <EntityTypeMapping TypeName="testdbModel.Error">
         <MappingFragment StoreEntitySet="Error">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
@@ -81,7 +81,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="EstadoPuerta">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.EstadoPuerta">
+      <EntityTypeMapping TypeName="testdbModel.EstadoPuerta">
         <MappingFragment StoreEntitySet="EstadoPuerta">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -89,7 +89,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="EstadoVuelo">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.EstadoVuelo">
+      <EntityTypeMapping TypeName="testdbModel.EstadoVuelo">
         <MappingFragment StoreEntitySet="EstadoVuelo">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -97,7 +97,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FormaPago">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.FormaPago">
+      <EntityTypeMapping TypeName="testdbModel.FormaPago">
         <MappingFragment StoreEntitySet="FormaPago">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -105,7 +105,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Operacion">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Operacion">
+      <EntityTypeMapping TypeName="testdbModel.Operacion">
         <MappingFragment StoreEntitySet="Operacion">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -113,7 +113,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Pais">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Pais">
+      <EntityTypeMapping TypeName="testdbModel.Pais">
         <MappingFragment StoreEntitySet="Pais">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -122,7 +122,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Pregunta">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Pregunta">
+      <EntityTypeMapping TypeName="testdbModel.Pregunta">
         <MappingFragment StoreEntitySet="Pregunta">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -130,7 +130,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Puerta">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Puerta">
+      <EntityTypeMapping TypeName="testdbModel.Puerta">
         <MappingFragment StoreEntitySet="Puerta">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="numero" ColumnName="numero" />
@@ -139,7 +139,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Rol">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Rol">
+      <EntityTypeMapping TypeName="testdbModel.Rol">
         <MappingFragment StoreEntitySet="Rol">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -147,7 +147,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.sysdiagrams">
+      <EntityTypeMapping TypeName="testdbModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -158,7 +158,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tarjeta">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Tarjeta">
+      <EntityTypeMapping TypeName="testdbModel.Tarjeta">
         <MappingFragment StoreEntitySet="Tarjeta">
           <ScalarProperty Name="numero_tarjeta" ColumnName="numero_tarjeta" />
           <ScalarProperty Name="fecha_expiracion" ColumnName="fecha_expiracion" />
@@ -169,7 +169,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TipoTarjeta">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.TipoTarjeta">
+      <EntityTypeMapping TypeName="testdbModel.TipoTarjeta">
         <MappingFragment StoreEntitySet="TipoTarjeta">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -177,7 +177,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TipoTransaccion">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.TipoTransaccion">
+      <EntityTypeMapping TypeName="testdbModel.TipoTransaccion">
         <MappingFragment StoreEntitySet="TipoTransaccion">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -185,7 +185,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuario">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Usuario">
+      <EntityTypeMapping TypeName="testdbModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
           <ScalarProperty Name="usuario1" ColumnName="usuario" />
           <ScalarProperty Name="contrasena" ColumnName="contrasena" />
@@ -197,7 +197,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Vuelo">
-      <EntityTypeMapping TypeName="V_Vuelos_MainModel.Vuelo">
+      <EntityTypeMapping TypeName="testdbModel.Vuelo">
         <MappingFragment StoreEntitySet="Vuelo">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="fecha_partida" ColumnName="fecha_partida" />
@@ -209,23 +209,24 @@
           <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="parte_de" ColumnName="parte_de" />
           <ScalarProperty Name="llega_a" ColumnName="llega_a" />
+          <ScalarProperty Name="saliendo" ColumnName="saliendo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="V_Vuelos_MainModel.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="V_Vuelos_MainModel.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="V_Vuelos_MainModel.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="V_Vuelos_MainModel.Store.sp_helpdiagramdefinition">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="testdbModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="testdbModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="testdbModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="testdbModel.Store.sp_helpdiagramdefinition">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="V_Vuelos_MainModel.sp_helpdiagramdefinition_Result">
+        <ComplexTypeMapping TypeName="testdbModel.sp_helpdiagramdefinition_Result">
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="V_Vuelos_MainModel.Store.sp_helpdiagrams">
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="testdbModel.Store.sp_helpdiagrams">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="V_Vuelos_MainModel.sp_helpdiagrams_Result">
+        <ComplexTypeMapping TypeName="testdbModel.sp_helpdiagrams_Result">
           <ScalarProperty Name="Database" ColumnName="Database" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -234,33 +235,11 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="V_Vuelos_MainModel.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="V_Vuelos_MainModel.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="uspCambiarContrasenaUsuario" FunctionName="V_Vuelos_MainModel.Store.uspCambiarContrasenaUsuario" />
-    <FunctionImportMapping FunctionImportName="uspRecuperarAerolineaPorPais" FunctionName="V_Vuelos_MainModel.Store.uspRecuperarAerolineaPorPais">
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="testdbModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="testdbModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="uspBuscarVuelos" FunctionName="testdbModel.Store.uspBuscarVuelos">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="V_Vuelos_MainModel.uspRecuperarAerolineaPorPais_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="imagen" ColumnName="imagen" />
-          <ScalarProperty Name="CodigoPais" ColumnName="CodigoPais" />
-          <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspRecuperarPuertasActivas" FunctionName="V_Vuelos_MainModel.Store.uspRecuperarPuertasActivas">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="V_Vuelos_MainModel.uspRecuperarPuertasActivas_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="numero" ColumnName="numero" />
-          <ScalarProperty Name="NumeroEstado" ColumnName="NumeroEstado" />
-          <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspRecuperarVuelos" FunctionName="V_Vuelos_MainModel.Store.uspRecuperarVuelos">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="V_Vuelos_MainModel.uspRecuperarVuelos_Result">
+        <ComplexTypeMapping TypeName="testdbModel.uspBuscarVuelos_Result">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="fecha_partida" ColumnName="fecha_partida" />
           <ScalarProperty Name="hora_partida" ColumnName="hora_partida" />
@@ -276,6 +255,73 @@
           <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
           <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
           <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+          <ScalarProperty Name="saliendo" ColumnName="saliendo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspCambiarContrasenaUsuario" FunctionName="testdbModel.Store.uspCambiarContrasenaUsuario" />
+    <FunctionImportMapping FunctionImportName="uspRecuperarAerolineaPorPais" FunctionName="testdbModel.Store.uspRecuperarAerolineaPorPais">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="testdbModel.uspRecuperarAerolineaPorPais_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="CodigoPais" ColumnName="CodigoPais" />
+          <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspRecuperarPuertasActivas" FunctionName="testdbModel.Store.uspRecuperarPuertasActivas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="testdbModel.uspRecuperarPuertasActivas_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="NumeroEstado" ColumnName="NumeroEstado" />
+          <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspRecuperarVuelos" FunctionName="testdbModel.Store.uspRecuperarVuelos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="testdbModel.uspRecuperarVuelos_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha_partida" ColumnName="fecha_partida" />
+          <ScalarProperty Name="hora_partida" ColumnName="hora_partida" />
+          <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+          <ScalarProperty Name="hora_llegada" ColumnName="hora_llegada" />
+          <ScalarProperty Name="codigo_aerolinea" ColumnName="codigo_aerolinea" />
+          <ScalarProperty Name="nombre_aerolinea" ColumnName="nombre_aerolinea" />
+          <ScalarProperty Name="codigo_puerta" ColumnName="codigo_puerta" />
+          <ScalarProperty Name="numero_puerta" ColumnName="numero_puerta" />
+          <ScalarProperty Name="codigo_estado" ColumnName="codigo_estado" />
+          <ScalarProperty Name="descripcion_estado" ColumnName="descripcion_estado" />
+          <ScalarProperty Name="codigo_pais_parte" ColumnName="codigo_pais_parte" />
+          <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
+          <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
+          <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+          <ScalarProperty Name="saliendo" ColumnName="saliendo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspRecuperarVuelos_EntranteSaliente" FunctionName="testdbModel.Store.uspRecuperarVuelos_EntranteSaliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="testdbModel.uspRecuperarVuelos_EntranteSaliente_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha_partida" ColumnName="fecha_partida" />
+          <ScalarProperty Name="hora_partida" ColumnName="hora_partida" />
+          <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+          <ScalarProperty Name="hora_llegada" ColumnName="hora_llegada" />
+          <ScalarProperty Name="codigo_aerolinea" ColumnName="codigo_aerolinea" />
+          <ScalarProperty Name="nombre_aerolinea" ColumnName="nombre_aerolinea" />
+          <ScalarProperty Name="codigo_puerta" ColumnName="codigo_puerta" />
+          <ScalarProperty Name="numero_puerta" ColumnName="numero_puerta" />
+          <ScalarProperty Name="codigo_estado" ColumnName="codigo_estado" />
+          <ScalarProperty Name="descripcion_estado" ColumnName="descripcion_estado" />
+          <ScalarProperty Name="codigo_pais_parte" ColumnName="codigo_pais_parte" />
+          <ScalarProperty Name="nombre_pais_parte" ColumnName="nombre_pais_parte" />
+          <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
+          <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
+          <ScalarProperty Name="saliendo" ColumnName="saliendo" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

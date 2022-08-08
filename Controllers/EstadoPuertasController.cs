@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -55,6 +56,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/EstadoPuertas/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutEstadoPuerta(decimal id, EstadoPuerta estadoPuerta)
         {
             if (!ModelState.IsValid)
@@ -92,6 +94,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/EstadoPuertas
         [ResponseType(typeof(EstadoPuerta))]
+        [DisableCors]
         public IHttpActionResult PostEstadoPuerta(EstadoPuerta estadoPuerta)
         {
             if (!ModelState.IsValid)
@@ -109,6 +112,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/EstadoPuertas/5
         [ResponseType(typeof(EstadoPuerta))]
+        [DisableCors]
         public IHttpActionResult DeleteEstadoPuerta(decimal id)
         {
             EstadoPuerta estadoPuerta = db.EstadoPuerta.Find(id);

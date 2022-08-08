@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="V_Vuelos_MainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="testdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Aerolinea">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="pais" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Bitacora">
@@ -14,12 +14,12 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Decimal" Precision="12" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fecha" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="hora" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="registro_detalle" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="usuario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="operacion" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
-    <Property Name="descripcion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="Boleto">
     <Key>
@@ -58,7 +58,7 @@
     <Property Name="id" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="valor" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="prefijo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prefijo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="rango_inicial" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="rango_final" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
   </EntityType>
@@ -106,7 +106,7 @@
     </Key>
     <Property Name="id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="nombre" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="Pregunta">
     <Key>
@@ -189,6 +189,7 @@
     <Property Name="estado" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
     <Property Name="parte_de" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="llega_a" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="saliendo" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_Aerolinea_Pais">
     <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
@@ -548,11 +549,11 @@
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(V_Vuelos_MainModel.sp_helpdiagramdefinition_Result)">
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(testdbModel.sp_helpdiagramdefinition_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(V_Vuelos_MainModel.sp_helpdiagrams_Result)">
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(testdbModel.sp_helpdiagrams_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -562,15 +563,22 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="uspBuscarVuelos" ReturnType="Collection(testdbModel.uspBuscarVuelos_Result)">
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="pais" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="uspCambiarContrasenaUsuario">
       <Parameter Name="nombreUsuario" Mode="In" Type="String" />
       <Parameter Name="nuevaContrasena" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="uspRecuperarAerolineaPorPais" ReturnType="Collection(V_Vuelos_MainModel.uspRecuperarAerolineaPorPais_Result)">
+    <FunctionImport Name="uspRecuperarAerolineaPorPais" ReturnType="Collection(testdbModel.uspRecuperarAerolineaPorPais_Result)">
       <Parameter Name="idPais" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="uspRecuperarPuertasActivas" ReturnType="Collection(V_Vuelos_MainModel.uspRecuperarPuertasActivas_Result)" />
-    <FunctionImport Name="uspRecuperarVuelos" ReturnType="Collection(V_Vuelos_MainModel.uspRecuperarVuelos_Result)" />
+    <FunctionImport Name="uspRecuperarPuertasActivas" ReturnType="Collection(testdbModel.uspRecuperarPuertasActivas_Result)" />
+    <FunctionImport Name="uspRecuperarVuelos" ReturnType="Collection(testdbModel.uspRecuperarVuelos_Result)" />
+    <FunctionImport Name="uspRecuperarVuelos_EntranteSaliente" ReturnType="Collection(testdbModel.uspRecuperarVuelos_EntranteSaliente_Result)">
+      <Parameter Name="modo" Mode="In" Type="Boolean" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -583,10 +591,28 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <ComplexType Name="uspBuscarVuelos_Result">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="fecha_partida" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="hora_partida" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="fecha_llegada" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="hora_llegada" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="codigo_aerolinea" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nombre_aerolinea" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="codigo_puerta" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="numero_puerta" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="codigo_estado" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion_estado" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="codigo_pais_parte" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="nombre_pais_parte" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="codigo_pais_llega" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="nombre_pais_llega" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="saliendo" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="uspRecuperarAerolineaPorPais_Result">
     <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
-    <Property Type="Binary" Name="imagen" Nullable="false" />
+    <Property Type="String" Name="imagen" Nullable="false" />
     <Property Type="String" Name="CodigoPais" Nullable="true" MaxLength="25" />
     <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="1000" />
   </ComplexType>
@@ -612,5 +638,24 @@
     <Property Type="String" Name="nombre_pais_parte" Nullable="true" MaxLength="1000" />
     <Property Type="String" Name="codigo_pais_llega" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="nombre_pais_llega" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="saliendo" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspRecuperarVuelos_EntranteSaliente_Result">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="fecha_partida" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="hora_partida" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="fecha_llegada" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="hora_llegada" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="codigo_aerolinea" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nombre_aerolinea" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="codigo_puerta" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="numero_puerta" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="codigo_estado" Nullable="false" Precision="2" Scale="0" />
+    <Property Type="String" Name="descripcion_estado" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="codigo_pais_parte" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="nombre_pais_parte" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="codigo_pais_llega" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="nombre_pais_llega" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="saliendo" Nullable="false" />
   </ComplexType>
 </Schema>

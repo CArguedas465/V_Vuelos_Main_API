@@ -16,6 +16,6 @@ namespace V_Vuelos_Main_API.Models
     {
         public string id { get; set; }
         public string nombre { get; set; }
-        public byte[] imagen { get; set; }
+        public string imagen { get; set; }
     }
 }

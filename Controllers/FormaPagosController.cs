@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using V_Vuelos_Main_API.Crypto;
 using V_Vuelos_Main_API.Models;
@@ -54,6 +55,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // PUT: api/FormaPagos/5
         [ResponseType(typeof(void))]
+        [DisableCors]
         public IHttpActionResult PutFormaPago(decimal id, FormaPago formaPago)
         {
             if (!ModelState.IsValid)
@@ -90,6 +92,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // POST: api/FormaPagos
         [ResponseType(typeof(FormaPago))]
+        [DisableCors]
         public IHttpActionResult PostFormaPago(FormaPago formaPago)
         {
             if (!ModelState.IsValid)
@@ -107,6 +110,7 @@ namespace V_Vuelos_Main_API.Controllers
 
         // DELETE: api/FormaPagos/5
         [ResponseType(typeof(FormaPago))]
+        [DisableCors]
         public IHttpActionResult DeleteFormaPago(decimal id)
         {
             FormaPago formaPago = db.FormaPago.Find(id);
