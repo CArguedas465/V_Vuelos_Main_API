@@ -165,6 +165,19 @@ namespace V_Vuelos_Main_API.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspBuscarVuelos_Result>("uspBuscarVuelos", dateParameter, paisParameter);
         }
     
+        public virtual int uspCambiarContrasenaCliente(string nombreUsuario, string nuevaContrasena)
+        {
+            var nombreUsuarioParameter = nombreUsuario != null ?
+                new ObjectParameter("nombreUsuario", nombreUsuario) :
+                new ObjectParameter("nombreUsuario", typeof(string));
+    
+            var nuevaContrasenaParameter = nuevaContrasena != null ?
+                new ObjectParameter("nuevaContrasena", nuevaContrasena) :
+                new ObjectParameter("nuevaContrasena", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspCambiarContrasenaCliente", nombreUsuarioParameter, nuevaContrasenaParameter);
+        }
+    
         public virtual int uspCambiarContrasenaUsuario(string nombreUsuario, string nuevaContrasena)
         {
             var nombreUsuarioParameter = nombreUsuario != null ?

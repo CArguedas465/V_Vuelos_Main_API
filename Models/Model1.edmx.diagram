@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="175afc096bda40b78cdddcbaa17a4eaa" Name="Diagram1">
+      <Diagram DiagramId="110f1d81858f4620ba5a4b1ec28aa0af" Name="Diagram1">
         <EntityTypeShape EntityType="testdbModel.Aerolinea" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="testdbModel.Bitacora" Width="1.5" PointX="10.5" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbModel.Boleto" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbModel.Boleto" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="testdbModel.ClienteToken" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="testdbModel.ClienteWeb" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="testdbModel.Consecutivo" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />

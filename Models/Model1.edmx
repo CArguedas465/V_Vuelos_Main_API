@@ -36,6 +36,7 @@
           <Property Name="vuelo" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="cliente" Type="varchar" MaxLength="900" Nullable="false" />
           <Property Name="precio" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="ClienteToken">
           <Key>
@@ -150,10 +151,10 @@
             <PropertyRef Name="numero_tarjeta" />
           </Key>
           <Property Name="numero_tarjeta" Type="varchar" MaxLength="900" Nullable="false" />
-          <Property Name="fecha_expiracion" Type="varchar" MaxLength="900" />
-          <Property Name="tipo_tarjeta" Type="decimal" Precision="2" Scale="0" />
-          <Property Name="cliente" Type="varchar" MaxLength="900" />
-          <Property Name="cvv" Type="varchar" MaxLength="900" />
+          <Property Name="fecha_expiracion" Type="varchar" MaxLength="900" Nullable="false" />
+          <Property Name="tipo_tarjeta" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="cliente" Type="varchar" MaxLength="900" Nullable="false" />
+          <Property Name="cvv" Type="varchar" MaxLength="900" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoTarjeta">
           <Key>
@@ -317,7 +318,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tarjeta_ClienteToken">
-          <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="0..1" />
+          <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="1" />
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClienteToken">
@@ -329,7 +330,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tarjeta_ClienteWeb">
-          <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="0..1" />
+          <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="1" />
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClienteWeb">
@@ -341,7 +342,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tarjeta_TipoTarjeta">
-          <End Role="TipoTarjeta" Type="Self.TipoTarjeta" Multiplicity="0..1" />
+          <End Role="TipoTarjeta" Type="Self.TipoTarjeta" Multiplicity="1" />
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoTarjeta">
@@ -471,6 +472,10 @@
           <Parameter Name="date" Type="date" Mode="In" />
           <Parameter Name="pais" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="uspCambiarContrasenaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="nuevaContrasena" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="uspCambiarContrasenaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
           <Parameter Name="nuevaContrasena" Type="varchar" Mode="In" />
@@ -599,7 +604,7 @@
           <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pais" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          </EntityType>
+        </EntityType>
         <EntityType Name="Bitacora">
           <Key>
             <PropertyRef Name="id" />
@@ -622,6 +627,7 @@
           <Property Name="vuelo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cliente" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="precio" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="ClienteToken">
           <Key>
@@ -713,7 +719,7 @@
           <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="numero" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="estado" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
-          </EntityType>
+        </EntityType>
         <EntityType Name="Rol">
           <Key>
             <PropertyRef Name="id" />
@@ -736,10 +742,10 @@
             <PropertyRef Name="numero_tarjeta" />
           </Key>
           <Property Name="numero_tarjeta" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_expiracion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
-          <Property Name="tipo_tarjeta" Type="Decimal" Precision="2" Scale="0" />
-          <Property Name="cliente" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
-          <Property Name="cvv" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_expiracion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_tarjeta" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="cliente" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cvv" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
           </EntityType>
         <EntityType Name="TipoTarjeta">
           <Key>
@@ -891,7 +897,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tarjeta_ClienteToken">
-          <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="0..1" />
+          <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="1" />
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClienteToken">
@@ -915,7 +921,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tarjeta_ClienteWeb">
-          <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="0..1" />
+          <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="1" />
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClienteWeb">
@@ -1011,7 +1017,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tarjeta_TipoTarjeta">
-          <End Role="TipoTarjeta" Type="Self.TipoTarjeta" Multiplicity="0..1" />
+          <End Role="TipoTarjeta" Type="Self.TipoTarjeta" Multiplicity="1" />
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoTarjeta">
@@ -1158,6 +1164,10 @@
             <Parameter Name="date" Mode="In" Type="DateTime" />
             <Parameter Name="pais" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="uspCambiarContrasenaCliente">
+            <Parameter Name="nombreUsuario" Mode="In" Type="String" />
+            <Parameter Name="nuevaContrasena" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="uspCambiarContrasenaUsuario">
             <Parameter Name="nombreUsuario" Mode="In" Type="String" />
             <Parameter Name="nuevaContrasena" Mode="In" Type="String" />
@@ -1287,6 +1297,7 @@
                 <ScalarProperty Name="vuelo" ColumnName="vuelo" />
                 <ScalarProperty Name="cliente" ColumnName="cliente" />
                 <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1513,6 +1524,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspCambiarContrasenaCliente" FunctionName="testdbModel.Store.uspCambiarContrasenaCliente" />
           <FunctionImportMapping FunctionImportName="uspCambiarContrasenaUsuario" FunctionName="testdbModel.Store.uspCambiarContrasenaUsuario" />
           <FunctionImportMapping FunctionImportName="uspRecuperarAerolineaPorPais" FunctionName="testdbModel.Store.uspRecuperarAerolineaPorPais">
             <ResultMapping>

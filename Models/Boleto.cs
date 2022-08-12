@@ -20,5 +20,6 @@ namespace V_Vuelos_Main_API.Models
         public string vuelo { get; set; }
         public string cliente { get; set; }
         public string precio { get; set; }
+        public decimal cantidad { get; set; }
     }
 }
