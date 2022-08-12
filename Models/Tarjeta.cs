@@ -16,7 +16,7 @@ namespace V_Vuelos_Main_API.Models
     {
         public string numero_tarjeta { get; set; }
         public string fecha_expiracion { get; set; }
-        public Nullable<decimal> tipo_tarjeta { get; set; }
+        public decimal tipo_tarjeta { get; set; }
         public string cliente { get; set; }
         public string cvv { get; set; }
     }

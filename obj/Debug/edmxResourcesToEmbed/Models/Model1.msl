@@ -33,6 +33,7 @@
           <ScalarProperty Name="vuelo" ColumnName="vuelo" />
           <ScalarProperty Name="cliente" ColumnName="cliente" />
           <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -259,6 +260,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspCambiarContrasenaCliente" FunctionName="testdbModel.Store.uspCambiarContrasenaCliente" />
     <FunctionImportMapping FunctionImportName="uspCambiarContrasenaUsuario" FunctionName="testdbModel.Store.uspCambiarContrasenaUsuario" />
     <FunctionImportMapping FunctionImportName="uspRecuperarAerolineaPorPais" FunctionName="testdbModel.Store.uspRecuperarAerolineaPorPais">
       <ResultMapping>

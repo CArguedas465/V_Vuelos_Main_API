@@ -174,8 +174,10 @@
     <Compile Include="Controllers\BitacorasController.cs" />
     <Compile Include="Controllers\BusquedaBitacorasController.cs" />
     <Compile Include="Controllers\BusquedaVuelosController.cs" />
+    <Compile Include="Controllers\CambiarContraClienteController.cs" />
+    <Compile Include="Controllers\TarjetasController.cs" />
     <Compile Include="Controllers\VuelosEntrantesSalientesController.cs" />
-    <Compile Include="Controllers\CambiarContraController.cs" />
+    <Compile Include="Controllers\CambiarContraUsuarioController.cs" />
     <Compile Include="Controllers\ClientesWebController.cs" />
     <Compile Include="Controllers\ConsecutivosController.cs" />
     <Compile Include="Controllers\ErroresController.cs" />
