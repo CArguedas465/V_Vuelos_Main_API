@@ -14,11 +14,11 @@ using V_Vuelos_Main_API.Models;
 
 namespace V_Vuelos_Main_API.Controllers
 {
-    public class CambiarContraController : ApiController
+    public class CambiarContraUsuarioController : ApiController
     {
         private V_Vuelos_MainEntities db;
         Crypt c;
-        public CambiarContraController()
+        public CambiarContraUsuarioController()
         {
             db = new V_Vuelos_MainEntities();
             c = new Crypt();
