@@ -130,7 +130,7 @@ namespace V_Vuelos_Main_API.Controllers
             }
 
             TipoTarjeta tipoTarjeta = db.TipoTarjeta.Find(tarjetaDesc.tipo_tarjeta);
-
+          
             if (!(detector.BrandName == c.desencriptar(tipoTarjeta.descripcion)))
             {
                 return BadRequest("-1; Número de tarjeta inválido.");

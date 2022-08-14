@@ -107,14 +107,23 @@ namespace V_Vuelos_Main_API.Controllers
                 forma_pago = boleto.forma_pago,
                 tipo_transaccion = boleto.tipo_transaccion, 
                 vuelo = boleto.vuelo,
-                cliente = boleto.cliente, 
+                clienteWeb = boleto.clienteWeb,
+                clienteToken = boleto.clienteToken,
                 precio = boleto.precio, 
                 cantidad = boleto.cantidad
             };
 
+            Consecutivo consecutivo = db.Consecutivo.Find(4);
+
+            boleto.id = c.desencriptar(consecutivo.prefijo) + "-" + c.desencriptar(consecutivo.valor);
+
             boleto.precio = c.encriptar(boleto.precio);
             boleto.cantidad = c.encriptar(boleto.cantidad);
 
+            int valor = Convert.ToInt32(c.desencriptar(consecutivo.valor));
+            valor++;
+
+            consecutivo.valor = c.encriptar(valor.ToString());
             db.Boleto.Add(boleto);
 
             try

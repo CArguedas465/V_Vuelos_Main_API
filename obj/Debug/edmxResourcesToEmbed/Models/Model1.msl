@@ -31,7 +31,8 @@
           <ScalarProperty Name="forma_pago" ColumnName="forma_pago" />
           <ScalarProperty Name="tipo_transaccion" ColumnName="tipo_transaccion" />
           <ScalarProperty Name="vuelo" ColumnName="vuelo" />
-          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="clienteWeb" ColumnName="clienteWeb" />
+          <ScalarProperty Name="clienteToken" ColumnName="clienteToken" />
           <ScalarProperty Name="precio" ColumnName="precio" />
           <ScalarProperty Name="cantidad" ColumnName="cantidad" />
         </MappingFragment>
