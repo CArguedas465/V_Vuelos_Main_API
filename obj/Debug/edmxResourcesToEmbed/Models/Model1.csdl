@@ -31,7 +31,7 @@
     <Property Name="vuelo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="cliente" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="precio" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="cantidad" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="cantidad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="ClienteToken">
     <Key>
@@ -146,7 +146,8 @@
       <PropertyRef Name="numero_tarjeta" />
     </Key>
     <Property Name="numero_tarjeta" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="fecha_expiracion" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="anio_expiracion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mes_expiracion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="tipo_tarjeta" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
     <Property Name="cliente" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="cvv" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />

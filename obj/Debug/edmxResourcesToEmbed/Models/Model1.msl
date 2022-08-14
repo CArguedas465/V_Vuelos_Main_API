@@ -162,7 +162,8 @@
       <EntityTypeMapping TypeName="testdbModel.Tarjeta">
         <MappingFragment StoreEntitySet="Tarjeta">
           <ScalarProperty Name="numero_tarjeta" ColumnName="numero_tarjeta" />
-          <ScalarProperty Name="fecha_expiracion" ColumnName="fecha_expiracion" />
+          <ScalarProperty Name="anio_expiracion" ColumnName="anio_expiracion" />
+          <ScalarProperty Name="mes_expiracion" ColumnName="mes_expiracion" />
           <ScalarProperty Name="tipo_tarjeta" ColumnName="tipo_tarjeta" />
           <ScalarProperty Name="cliente" ColumnName="cliente" />
           <ScalarProperty Name="cvv" ColumnName="cvv" />
