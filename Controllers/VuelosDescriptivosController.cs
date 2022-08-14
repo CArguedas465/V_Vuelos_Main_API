@@ -39,6 +39,8 @@ namespace V_Vuelos_Main_API.Controllers
                 vuelo.descripcion_estado = c.desencriptar(vuelo.descripcion_estado);
                 vuelo.nombre_pais_parte = c.desencriptar(vuelo.nombre_pais_parte);
                 vuelo.nombre_pais_llega = c.desencriptar(vuelo.nombre_pais_llega);
+                vuelo.precio = c.desencriptar(vuelo.precio);
+
             }
 
             return resultado;

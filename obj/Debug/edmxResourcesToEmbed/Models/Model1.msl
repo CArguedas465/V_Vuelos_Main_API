@@ -213,6 +213,7 @@
           <ScalarProperty Name="parte_de" ColumnName="parte_de" />
           <ScalarProperty Name="llega_a" ColumnName="llega_a" />
           <ScalarProperty Name="saliendo" ColumnName="saliendo" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -304,6 +305,7 @@
           <ScalarProperty Name="codigo_pais_llega" ColumnName="codigo_pais_llega" />
           <ScalarProperty Name="nombre_pais_llega" ColumnName="nombre_pais_llega" />
           <ScalarProperty Name="saliendo" ColumnName="saliendo" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

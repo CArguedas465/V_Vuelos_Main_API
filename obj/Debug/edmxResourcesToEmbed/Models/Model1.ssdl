@@ -193,6 +193,7 @@
     <Property Name="parte_de" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="llega_a" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="saliendo" Type="bit" Nullable="false" />
+    <Property Name="precio" Type="varchar" MaxLength="1000" Nullable="false" />
   </EntityType>
   <Association Name="FK_Aerolinea_Pais">
     <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
