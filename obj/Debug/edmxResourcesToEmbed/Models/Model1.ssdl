@@ -29,8 +29,9 @@
     <Property Name="forma_pago" Type="decimal" Precision="2" Scale="0" Nullable="false" />
     <Property Name="tipo_transaccion" Type="decimal" Precision="2" Scale="0" Nullable="false" />
     <Property Name="vuelo" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="cliente" Type="varchar" MaxLength="900" Nullable="false" />
-    <Property Name="precio" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="clienteWeb" Type="varchar" MaxLength="900" />
+    <Property Name="clienteToken" Type="varchar" MaxLength="900" />
+    <Property Name="precio" Type="varchar" MaxLength="1000" />
     <Property Name="cantidad" Type="varchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="ClienteToken">
@@ -229,27 +230,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Boleto_ClienteToken">
-    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="1" />
+  <Association Name="FK_Boleto_ClienteToken1">
+    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="0..1" />
     <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ClienteToken">
         <PropertyRef Name="correo" />
       </Principal>
       <Dependent Role="Boleto">
-        <PropertyRef Name="cliente" />
+        <PropertyRef Name="clienteToken" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Boleto_ClienteWeb">
-    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="1" />
+  <Association Name="FK_Boleto_ClienteWeb1">
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="0..1" />
     <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ClienteWeb">
         <PropertyRef Name="usuario" />
       </Principal>
       <Dependent Role="Boleto">
-        <PropertyRef Name="cliente" />
+        <PropertyRef Name="clienteWeb" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -518,11 +519,11 @@
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Bitacora" EntitySet="Bitacora" />
     </AssociationSet>
-    <AssociationSet Name="FK_Boleto_ClienteToken" Association="Self.FK_Boleto_ClienteToken">
+    <AssociationSet Name="FK_Boleto_ClienteToken1" Association="Self.FK_Boleto_ClienteToken1">
       <End Role="ClienteToken" EntitySet="ClienteToken" />
       <End Role="Boleto" EntitySet="Boleto" />
     </AssociationSet>
-    <AssociationSet Name="FK_Boleto_ClienteWeb" Association="Self.FK_Boleto_ClienteWeb">
+    <AssociationSet Name="FK_Boleto_ClienteWeb1" Association="Self.FK_Boleto_ClienteWeb1">
       <End Role="ClienteWeb" EntitySet="ClienteWeb" />
       <End Role="Boleto" EntitySet="Boleto" />
     </AssociationSet>
