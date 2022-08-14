@@ -31,7 +31,7 @@
     <Property Name="vuelo" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="cliente" Type="varchar" MaxLength="900" Nullable="false" />
     <Property Name="precio" Type="varchar" MaxLength="1000" Nullable="false" />
-    <Property Name="cantidad" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="cantidad" Type="varchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="ClienteToken">
     <Key>
@@ -146,7 +146,8 @@
       <PropertyRef Name="numero_tarjeta" />
     </Key>
     <Property Name="numero_tarjeta" Type="varchar" MaxLength="900" Nullable="false" />
-    <Property Name="fecha_expiracion" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="anio_expiracion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="mes_expiracion" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="tipo_tarjeta" Type="decimal" Precision="2" Scale="0" Nullable="false" />
     <Property Name="cliente" Type="varchar" MaxLength="900" Nullable="false" />
     <Property Name="cvv" Type="varchar" MaxLength="900" Nullable="false" />

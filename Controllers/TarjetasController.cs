@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CreditCardValidator;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -31,7 +32,8 @@ namespace V_Vuelos_Main_API.Controllers
             foreach (var tarjeta in resultado)
             {
                 tarjeta.numero_tarjeta = c.desencriptar(tarjeta.numero_tarjeta);
-                tarjeta.fecha_expiracion = c.desencriptar(tarjeta.fecha_expiracion);
+                tarjeta.mes_expiracion = c.desencriptar(tarjeta.mes_expiracion);
+                tarjeta.anio_expiracion = c.desencriptar(tarjeta.anio_expiracion);
                 tarjeta.cvv = c.desencriptar(tarjeta.cvv);
             }
 
@@ -49,7 +51,8 @@ namespace V_Vuelos_Main_API.Controllers
             }
 
             tarjeta.numero_tarjeta = c.desencriptar(tarjeta.numero_tarjeta);
-            tarjeta.fecha_expiracion = c.desencriptar(tarjeta.fecha_expiracion);
+            tarjeta.mes_expiracion = c.desencriptar(tarjeta.mes_expiracion);
+            tarjeta.anio_expiracion = c.desencriptar(tarjeta.anio_expiracion);
             tarjeta.cvv = c.desencriptar(tarjeta.cvv);
 
             return Ok(tarjeta);
@@ -70,7 +73,8 @@ namespace V_Vuelos_Main_API.Controllers
             }
 
             tarjeta.numero_tarjeta = c.encriptar(tarjeta.numero_tarjeta);
-            tarjeta.fecha_expiracion = c.encriptar(tarjeta.fecha_expiracion);
+            tarjeta.mes_expiracion = c.encriptar(tarjeta.mes_expiracion);
+            tarjeta.anio_expiracion = c.encriptar(tarjeta.anio_expiracion);
             tarjeta.cvv = c.encriptar(tarjeta.cvv);
 
             db.Entry(tarjeta).State = EntityState.Modified;
@@ -106,15 +110,54 @@ namespace V_Vuelos_Main_API.Controllers
             Tarjeta tarjetaDesc = new Tarjeta()
             {
                 numero_tarjeta = tarjeta.numero_tarjeta,
-                fecha_expiracion = tarjeta.fecha_expiracion,
+                anio_expiracion = tarjeta.anio_expiracion, 
+                mes_expiracion = tarjeta.mes_expiracion,
                 tipo_tarjeta = tarjeta.tipo_tarjeta,
                 cliente = tarjeta.cliente,
                 cvv = tarjeta.cvv
             };
 
             tarjeta.numero_tarjeta = c.encriptar(tarjeta.numero_tarjeta);
-            tarjeta.fecha_expiracion = c.encriptar(tarjeta.fecha_expiracion);
+            tarjeta.mes_expiracion = c.encriptar(tarjeta.mes_expiracion);
+            tarjeta.anio_expiracion = c.encriptar(tarjeta.anio_expiracion);
             tarjeta.cvv = c.encriptar(tarjeta.cvv);
+
+            CreditCardDetector detector = new CreditCardDetector(tarjetaDesc.numero_tarjeta);
+
+            if (!detector.IsValid())
+            {
+                return BadRequest("-1; Número de tarjeta inválido.");
+            }
+
+            TipoTarjeta tipoTarjeta = db.TipoTarjeta.Find(tarjetaDesc.tipo_tarjeta);
+
+            if (!(detector.BrandName == c.desencriptar(tipoTarjeta.descripcion)))
+            {
+                return BadRequest("-1; Número de tarjeta inválido.");
+            };
+
+            DateTime date = DateTime.Now;
+
+            if (date.Year > Convert.ToInt32(tarjetaDesc.anio_expiracion))
+            {
+                return BadRequest("-2; Fecha de expiración inválida o la tarjeta expiró.");
+            }
+            else
+            {
+                if (date.Year == Convert.ToInt32(tarjetaDesc.anio_expiracion))
+                {
+                    if (date.Month > Convert.ToInt32(tarjetaDesc.mes_expiracion))
+                    {
+                        return BadRequest("-2; Fecha de expiración inválida o la tarjeta expiró.");
+                    }
+                }
+            }
+
+            var cvvLength = tarjetaDesc.cvv.ToString().Length;
+            if (cvvLength != 3)
+            {
+                return BadRequest("-3; CVV incorrecto.");
+            }
 
             db.Tarjeta.Add(tarjeta);
 
