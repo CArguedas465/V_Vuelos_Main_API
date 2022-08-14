@@ -35,6 +35,8 @@ namespace V_Vuelos_Main_API.Controllers
                 vuelo.hora_partida = c.desencriptar(vuelo.hora_partida);
                 vuelo.fecha_llegada = c.desencriptar(vuelo.fecha_llegada);
                 vuelo.hora_llegada = c.desencriptar(vuelo.hora_llegada);
+                vuelo.precio = c.desencriptar(vuelo.precio);
+
             }
 
             return resultado;
@@ -54,6 +56,8 @@ namespace V_Vuelos_Main_API.Controllers
             vuelo.hora_partida = c.desencriptar(vuelo.hora_partida);
             vuelo.fecha_llegada = c.desencriptar(vuelo.fecha_llegada);
             vuelo.hora_llegada = c.desencriptar(vuelo.hora_llegada);
+            vuelo.precio = c.desencriptar(vuelo.precio);
+
 
             return Ok(vuelo);
         }
@@ -77,6 +81,7 @@ namespace V_Vuelos_Main_API.Controllers
             vuelo.hora_partida = c.encriptar(vuelo.hora_partida);
             vuelo.fecha_llegada = c.encriptar(vuelo.fecha_llegada);
             vuelo.hora_llegada = c.encriptar(vuelo.hora_llegada);
+            vuelo.precio = c.encriptar(vuelo.precio);
 
             db.Entry(vuelo).State = EntityState.Modified;
 
@@ -116,6 +121,7 @@ namespace V_Vuelos_Main_API.Controllers
             vuelo.hora_partida = c.encriptar(vuelo.hora_partida);
             vuelo.fecha_llegada = c.encriptar(vuelo.fecha_llegada);
             vuelo.hora_llegada = c.encriptar(vuelo.hora_llegada);
+            vuelo.precio = c.encriptar(vuelo.precio);
 
             int valor = Convert.ToInt32(c.desencriptar(consecutivo.valor));
             valor++;

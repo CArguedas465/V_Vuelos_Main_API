@@ -193,6 +193,7 @@
     <Property Name="parte_de" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="llega_a" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="saliendo" Type="Boolean" Nullable="false" />
+    <Property Name="precio" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <Association Name="FK_Aerolinea_Pais">
     <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
@@ -646,6 +647,7 @@
     <Property Type="String" Name="codigo_pais_llega" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="nombre_pais_llega" Nullable="true" MaxLength="1000" />
     <Property Type="Boolean" Name="saliendo" Nullable="false" />
+    <Property Type="String" Name="precio" Nullable="false" MaxLength="1000" />
   </ComplexType>
   <ComplexType Name="uspRecuperarVuelos_EntranteSaliente_Result">
     <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
