@@ -150,7 +150,8 @@
     <Property Name="anio_expiracion" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="mes_expiracion" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="tipo_tarjeta" Type="decimal" Precision="2" Scale="0" Nullable="false" />
-    <Property Name="cliente" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="clienteWeb" Type="varchar" MaxLength="900" />
+    <Property Name="clienteToken" Type="varchar" MaxLength="900" />
     <Property Name="cvv" Type="varchar" MaxLength="900" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoTarjeta">
@@ -316,26 +317,26 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Tarjeta_ClienteToken">
-    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="1" />
+    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="0..1" />
     <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ClienteToken">
         <PropertyRef Name="correo" />
       </Principal>
       <Dependent Role="Tarjeta">
-        <PropertyRef Name="cliente" />
+        <PropertyRef Name="clienteWeb" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Tarjeta_ClienteWeb">
-    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="1" />
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="0..1" />
     <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ClienteWeb">
         <PropertyRef Name="usuario" />
       </Principal>
       <Dependent Role="Tarjeta">
-        <PropertyRef Name="cliente" />
+        <PropertyRef Name="clienteWeb" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

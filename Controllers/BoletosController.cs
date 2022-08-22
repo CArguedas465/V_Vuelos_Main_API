@@ -32,6 +32,10 @@ namespace V_Vuelos_Main_API.Controllers
             {
                 boleto.precio = c.desencriptar(boleto.precio);
                 boleto.cantidad = c.desencriptar(boleto.cantidad);
+                if (boleto.clienteToken != null)
+                {
+                    boleto.clienteToken = c.desencriptar(boleto.clienteToken);
+                }
             }
 
             return resultado;
@@ -50,6 +54,10 @@ namespace V_Vuelos_Main_API.Controllers
 
             boleto.precio = c.desencriptar(boleto.precio);
             boleto.cantidad = c.desencriptar(boleto.cantidad);
+            if (boleto.clienteToken != null)
+            {
+                boleto.clienteToken = c.desencriptar(boleto.clienteToken);
+            }
 
             return Ok(boleto);
         }
@@ -70,6 +78,10 @@ namespace V_Vuelos_Main_API.Controllers
 
             boleto.precio = c.encriptar(boleto.precio);
             boleto.cantidad = c.encriptar(boleto.cantidad);
+            if (boleto.clienteToken != null)
+            {
+                boleto.clienteToken = c.encriptar(boleto.clienteToken);
+            }
 
             db.Entry(boleto).State = EntityState.Modified;
 
@@ -124,6 +136,10 @@ namespace V_Vuelos_Main_API.Controllers
             valor++;
 
             consecutivo.valor = c.encriptar(valor.ToString());
+            if (boleto.clienteToken != null)
+            {
+                boleto.clienteToken = c.encriptar(boleto.clienteToken);
+            }
             db.Boleto.Add(boleto);
 
             try

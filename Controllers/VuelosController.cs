@@ -161,6 +161,7 @@ namespace V_Vuelos_Main_API.Controllers
             var estadoDesc = c.desencriptar(estado.descripcion);
             var parteDesc = c.desencriptar(parte_de.nombre);
             var llegaDesc = c.desencriptar(llega_a.nombre);
+            var precioDesc = c.desencriptar(vuelo.precio);
 
             return  Ok(new
             {
@@ -173,7 +174,8 @@ namespace V_Vuelos_Main_API.Controllers
                 puertaDesc,
                 estadoDesc,
                 parteDesc,
-                llegaDesc
+                llegaDesc,
+                precioDesc
             });
         }
 

@@ -150,7 +150,8 @@
     <Property Name="anio_expiracion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="mes_expiracion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="tipo_tarjeta" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
-    <Property Name="cliente" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clienteWeb" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+    <Property Name="clienteToken" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
     <Property Name="cvv" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoTarjeta">
@@ -304,14 +305,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Tarjeta_ClienteToken">
-    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="1" />
+    <End Role="ClienteToken" Type="Self.ClienteToken" Multiplicity="0..1" />
     <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ClienteToken">
         <PropertyRef Name="correo" />
       </Principal>
       <Dependent Role="Tarjeta">
-        <PropertyRef Name="cliente" />
+        <PropertyRef Name="clienteWeb" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -328,14 +329,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Tarjeta_ClienteWeb">
-    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="1" />
+    <End Role="ClienteWeb" Type="Self.ClienteWeb" Multiplicity="0..1" />
     <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ClienteWeb">
         <PropertyRef Name="usuario" />
       </Principal>
       <Dependent Role="Tarjeta">
-        <PropertyRef Name="cliente" />
+        <PropertyRef Name="clienteWeb" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
