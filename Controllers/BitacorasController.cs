@@ -107,6 +107,8 @@ namespace V_Vuelos_Main_API.Controllers
                 return BadRequest(ModelState);
             }
 
+            //DateTime fecha = DateTime.ParseExact();
+
             bitacora.hora = c.encriptar(bitacora.hora);
             bitacora.registro_detalle = c.encriptar(bitacora.registro_detalle);
             bitacora.descripcion = c.encriptar(bitacora.descripcion);

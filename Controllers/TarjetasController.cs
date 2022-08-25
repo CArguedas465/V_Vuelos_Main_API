@@ -35,6 +35,11 @@ namespace V_Vuelos_Main_API.Controllers
                 tarjeta.mes_expiracion = c.desencriptar(tarjeta.mes_expiracion);
                 tarjeta.anio_expiracion = c.desencriptar(tarjeta.anio_expiracion);
                 tarjeta.cvv = c.desencriptar(tarjeta.cvv);
+                if (tarjeta.clienteToken != null)
+                {
+                    tarjeta.clienteToken = c.desencriptar(tarjeta.clienteToken);
+                }
+
             }
 
             return resultado;
@@ -54,6 +59,10 @@ namespace V_Vuelos_Main_API.Controllers
             tarjeta.mes_expiracion = c.desencriptar(tarjeta.mes_expiracion);
             tarjeta.anio_expiracion = c.desencriptar(tarjeta.anio_expiracion);
             tarjeta.cvv = c.desencriptar(tarjeta.cvv);
+            if (tarjeta.clienteToken != null)
+            {
+                tarjeta.clienteToken = c.desencriptar(tarjeta.clienteToken);
+            }
 
             return Ok(tarjeta);
         }
@@ -76,6 +85,10 @@ namespace V_Vuelos_Main_API.Controllers
             tarjeta.mes_expiracion = c.encriptar(tarjeta.mes_expiracion);
             tarjeta.anio_expiracion = c.encriptar(tarjeta.anio_expiracion);
             tarjeta.cvv = c.encriptar(tarjeta.cvv);
+            if (tarjeta.clienteToken != null)
+            {
+                tarjeta.clienteToken = c.encriptar(tarjeta.clienteToken);
+            }
 
             db.Entry(tarjeta).State = EntityState.Modified;
 
@@ -113,7 +126,8 @@ namespace V_Vuelos_Main_API.Controllers
                 anio_expiracion = tarjeta.anio_expiracion, 
                 mes_expiracion = tarjeta.mes_expiracion,
                 tipo_tarjeta = tarjeta.tipo_tarjeta,
-                cliente = tarjeta.cliente,
+                clienteWeb = tarjeta.clienteWeb,
+                clienteToken = tarjeta.clienteToken,
                 cvv = tarjeta.cvv
             };
 
@@ -121,6 +135,10 @@ namespace V_Vuelos_Main_API.Controllers
             tarjeta.mes_expiracion = c.encriptar(tarjeta.mes_expiracion);
             tarjeta.anio_expiracion = c.encriptar(tarjeta.anio_expiracion);
             tarjeta.cvv = c.encriptar(tarjeta.cvv);
+            if (tarjeta.clienteToken != null)
+            {
+                tarjeta.clienteToken = c.encriptar(tarjeta.clienteToken);
+            }
 
             CreditCardDetector detector = new CreditCardDetector(tarjetaDesc.numero_tarjeta);
 
@@ -131,7 +149,7 @@ namespace V_Vuelos_Main_API.Controllers
 
             TipoTarjeta tipoTarjeta = db.TipoTarjeta.Find(tarjetaDesc.tipo_tarjeta);
           
-            if (!(detector.BrandName == c.desencriptar(tipoTarjeta.descripcion)))
+            if (!(detector.BrandName.ToUpper() == c.desencriptar(tipoTarjeta.descripcion).ToUpper()))
             {
                 return BadRequest("-1; Número de tarjeta inválido.");
             };
@@ -184,7 +202,7 @@ namespace V_Vuelos_Main_API.Controllers
         [ResponseType(typeof(Tarjeta))]
         public IHttpActionResult DeleteTarjeta(string id)
         {
-            Tarjeta tarjeta = db.Tarjeta.Find(id);
+            Tarjeta tarjeta = db.Tarjeta.Find(c.encriptar(id));
             if (tarjeta == null)
             {
                 return NotFound();

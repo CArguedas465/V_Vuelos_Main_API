@@ -166,7 +166,8 @@
           <ScalarProperty Name="anio_expiracion" ColumnName="anio_expiracion" />
           <ScalarProperty Name="mes_expiracion" ColumnName="mes_expiracion" />
           <ScalarProperty Name="tipo_tarjeta" ColumnName="tipo_tarjeta" />
-          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="clienteWeb" ColumnName="clienteWeb" />
+          <ScalarProperty Name="clienteToken" ColumnName="clienteToken" />
           <ScalarProperty Name="cvv" ColumnName="cvv" />
         </MappingFragment>
       </EntityTypeMapping>
